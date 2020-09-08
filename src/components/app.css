@@ -6,10 +6,6 @@
   color: #3cb44c !important;
 }
 
-#control-tabs {
-  background-color: #eaecef;
-}
-
 .navbar-nav > .active > a {
   background-color: silver !important;
 }
