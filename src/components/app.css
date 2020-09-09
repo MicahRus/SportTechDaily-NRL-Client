@@ -42,26 +42,24 @@ h3,
   font-size: 1.5vh;
 }
 
+th {
+  position: fixed;
+}
+
 .playerFix {
   left: 0;
   position: sticky;
   top: auto;
-  width: 120px;
+  font-size: 0.85rem;
   overflow-x: auto;
   background: #eee;
+  z-index: -1;
 }
 
 .tableFixHead {
   overflow-y: auto;
-  height: 1000px;
+  height: 80vh;
 }
-
-/* .tableFixHeadSmall {
-  overflow-y: auto;
-  height: 1000px;
-  font-size: 12px;
-  white-space: nowrap;
-} */
 
 th {
   position: sticky;
@@ -81,4 +79,9 @@ td {
 
 th {
   background: #eee;
+}
+
+td {
+  z-index: -2;
+  position: sticky;
 }

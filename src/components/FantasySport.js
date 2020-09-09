@@ -24,11 +24,9 @@ class FantasySport extends React.Component {
 
   popover = (
     <Popover id="popover-information">
-      <Popover.Title as="h3">How do our models work?</Popover.Title>
+      <Popover.Title as="h3">All About Fantasy</Popover.Title>
       <Popover.Content>
-        We have worked on creating a predictive model for a long time and we are
-        pleased with how it is working, but constantly working to further
-        increase its potency.
+        I'm not really sure what to write in here
         <br></br>
         <strong>Click for more information</strong>
       </Popover.Content>
@@ -37,7 +35,7 @@ class FantasySport extends React.Component {
 
   clickHandler = () => {
     window.location.assign(
-      "https://sporttechdaily.com/analytics/predictive-analytics-applied-to-rugby-league-looking-at-try-scorers-in-the-nrl/"
+      "https://sporttechdaily.com/our-insights/nrl-round-17-value-plays/"
     );
   };
 
@@ -123,7 +121,7 @@ class FantasySport extends React.Component {
   filteredDfsTable = () => {
     return (
       <div className="tableFixHead">
-        <Table size="sm" bordered striped hover>
+        <Table size="sm" bordered striped>
           <thead>
             <tr>
               <th>Player</th>
@@ -193,7 +191,7 @@ class FantasySport extends React.Component {
   dfsTable() {
     return (
       <div className="tableFixHead">
-        <Table size="sm" bordered striped hover>
+        <Table size="sm" bordered striped>
           <thead>
             <tr>
               <th>Player</th>

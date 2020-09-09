@@ -133,6 +133,7 @@ class SportsBetting extends React.Component {
     return (
       <div>
         <Select
+          style={{ zIndex: "999" }}
           options={this.state.matchNames}
           onChange={(e) =>
             this.setState({ selectedMatch: e.value }, () => {
@@ -206,7 +207,7 @@ class SportsBetting extends React.Component {
       <div>
         {this.informationButton()}
         <div className="tableFixHead">
-          <Table size="sm" bordered striped hover>
+          <Table size="sm" bordered striped>
             <thead>
               <tr>
                 <th>Player</th>
@@ -312,7 +313,7 @@ class SportsBetting extends React.Component {
       <div>
         {this.informationButton()}
         <div className="tableFixHead">
-          <Table size="sm" bordered striped hover>
+          <Table size="sm" bordered striped>
             <thead>
               <tr>
                 <th>Player</th>
@@ -433,7 +434,7 @@ class SportsBetting extends React.Component {
       <div>
         {this.informationButton()}
         <div className="tableFixHead">
-          <Table size="sm" bordered striped hover>
+          <Table size="sm" bordered striped>
             <thead>
               <tr>
                 <th>Player</th>
@@ -538,7 +539,7 @@ class SportsBetting extends React.Component {
       <div>
         {this.informationButton()}
         <div className="tableFixHead">
-          <Table size="sm" bordered striped hover>
+          <Table size="sm" bordered striped>
             <thead>
               <tr>
                 <th>Player</th>

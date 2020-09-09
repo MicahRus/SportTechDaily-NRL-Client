@@ -1974,7 +1974,7 @@ class Home extends React.Component {
     return (
       <Col>
         <div className="tableFixHead">
-          <Table bordered striped hover>
+          <Table bordered striped hover={false}>
             <thead>
               <tr>
                 <th>Rank</th>
