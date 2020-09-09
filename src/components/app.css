@@ -86,11 +86,21 @@ td {
   position: sticky;
 }
 
-footer {
+.footer {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: #000;
+  justify-content: space-evenly;
+  background-color: rgb(21, 18, 18);
   width: 100vw;
   color: whitesmoke;
+}
+
+.social {
+  color: #3cb44c;
+  margin: 5px;
+}
+
+#copyright {
+  font-size: small;
+  opacity: 35%;
 }
