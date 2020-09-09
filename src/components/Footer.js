@@ -2,10 +2,12 @@ import React from "react";
 
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
+import Tooltip from "react-bootstrap/Tooltip";
+import OverlayTrigger from "react-bootstrap/Overlay";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelopeSquare } from "@fortawesome/free-solid-svg-icons";
 
 import {
   faFacebook,
@@ -24,6 +26,7 @@ class Footer extends React.Component {
   }
 
   renderFooter = () => {
+    const tooltip = <Tooltip id="button-tooltip">Simple tooltip</Tooltip>;
     return (
       <Row>
         <div className="footer">
@@ -32,21 +35,19 @@ class Footer extends React.Component {
               © 2020 Sport Tech Daily. All rights reserved.
             </span>
           </footer>
-          {/* <footer>
-            <Button
-              variant="outline-success"
-              size="sm"
-              onClick={() => {
-                this.setState({ modalShow: true });
-              }}
-            >
-              Contact
-            </Button>
-          </footer> */}
+
           <footer>
+            <a
+              onClick={() => this.setState({ modalShow: true })}
+              className="social"
+            >
+              <FontAwesomeIcon icon={faEnvelopeSquare} size="2x" />
+            </a>
+
             <a href="https://twitter.com/SportTechDaily/" className="social">
               <FontAwesomeIcon icon={faTwitter} size="2x" />
             </a>
+
             <a
               href="https://www.linkedin.com/company/sport-tech-daily/"
               className="social"
@@ -72,7 +73,7 @@ class Footer extends React.Component {
   renderModal = () => {
     return (
       <Modal
-        size="lg"
+        size="sm"
         aria-labelledby="contained-modal-title-vcenter"
         centered
         show={this.state.modalShow}
@@ -84,11 +85,9 @@ class Footer extends React.Component {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Centered Modal</h4>
           <p>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-            ac consectetur ac, vestibulum at eros.
+            <FontAwesomeIcon icon={faEnvelopeSquare} size="1x" />{" "}
+            hello@sporttechdaily.com
           </p>
         </Modal.Body>
         <Modal.Footer>
