@@ -26,7 +26,7 @@ class FantasySport extends React.Component {
     <Popover id="popover-information">
       <Popover.Title as="h3">All About Fantasy</Popover.Title>
       <Popover.Content>
-        I'm not really sure what to write in here
+        Check out our value plays article for the week
         <br></br>
         <strong>Click for more information</strong>
       </Popover.Content>
