@@ -5,12 +5,13 @@ import Button from "react-bootstrap/Button";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+
 import {
   faFacebook,
   faTwitter,
   faInstagram,
   faSpotify,
-  faEnvelopeSquare,
 } from "@fortawesome/free-brands-svg-icons";
 
 import Modal from "react-bootstrap/Modal";
@@ -31,7 +32,7 @@ class Footer extends React.Component {
               © 2020 Sport Tech Daily. All rights reserved.
             </span>
           </footer>
-          <footer>
+          {/* <footer>
             <Button
               variant="outline-success"
               size="sm"
@@ -41,10 +42,10 @@ class Footer extends React.Component {
             >
               Contact
             </Button>
-          </footer>
+          </footer> */}
           <footer>
             <a href="https://twitter.com/SportTechDaily/" className="social">
-              <FontAwesomeIcon icon={faEnvelopeSquare} size="2x" />
+              <FontAwesomeIcon icon={faTwitter} size="2x" />
             </a>
             <a
               href="https://www.linkedin.com/company/sport-tech-daily/"

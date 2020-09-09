@@ -5,6 +5,7 @@
 h3,
 .h3 {
   font-size: 3vh !important;
+  padding-right: 5px;
 }
 
 .nav-link {
@@ -25,7 +26,7 @@ h3,
 
 .betting-header {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   margin: 5px;
 }
@@ -42,18 +43,23 @@ h3,
   font-size: 1.5vh;
 }
 
-th {
-  position: fixed;
-}
-
 .playerFix {
   left: 0;
   position: sticky;
   top: auto;
-  font-size: 0.85rem;
+  font-size: 1.4vh;
   overflow-x: auto;
   background: #eee;
   z-index: -1;
+}
+
+tr th:first-of-type {
+  left: 0;
+  position: sticky;
+  top: auto;
+  overflow-x: auto;
+  background: #eee;
+  z-index: 9;
 }
 
 .tableFixHead {
@@ -89,18 +95,19 @@ td {
 .footer {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   background-color: rgb(21, 18, 18);
   width: 100vw;
   color: whitesmoke;
 }
 
 .social {
-  color: #3cb44c;
+  color: rgb(228, 223, 223);
   margin: 5px;
 }
 
 #copyright {
   font-size: small;
+
   opacity: 35%;
 }
