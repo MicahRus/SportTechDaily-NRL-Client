@@ -1080,6 +1080,14 @@ class Home extends React.Component {
                 itemTextColor: "#999",
                 symbolSize: 12,
                 symbolShape: "circle",
+                effects: [
+                  {
+                    on: "hover",
+                    style: {
+                      itemTextColor: "#000",
+                    },
+                  },
+                ],
               },
             ]}
           />
