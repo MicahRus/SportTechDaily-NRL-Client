@@ -1,6 +1,6 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import { Table, OverlayTrigger } from "react-bootstrap";
+import { Table, OverlayTrigger, Button, Popover } from "react-bootstrap";
 
 import Select from "react-select";
 
@@ -21,6 +21,23 @@ class FantasySport extends React.Component {
   componentDidMount() {
     this.getDfsData();
   }
+
+  popover = (
+    <Popover id="popover-information">
+      <Popover.Title as="h3">All About Fantasy</Popover.Title>
+      <Popover.Content>
+        I'm not really sure what to write in here
+        <br></br>
+        <strong>Click for more information</strong>
+      </Popover.Content>
+    </Popover>
+  );
+
+  clickHandler = () => {
+    window.location.assign(
+      "https://sporttechdaily.com/our-insights/nrl-round-17-value-plays/"
+    );
+  };
 
   setMatchData = () => {
     const atsMatchArray = [];
@@ -104,7 +121,7 @@ class FantasySport extends React.Component {
   filteredDfsTable = () => {
     return (
       <div className="tableFixHead">
-        <Table size="sm" bordered striped hover>
+        <Table size="sm" bordered striped>
           <thead>
             <tr>
               <th>Player</th>
@@ -174,7 +191,7 @@ class FantasySport extends React.Component {
   dfsTable() {
     return (
       <div className="tableFixHead">
-        <Table size="sm" bordered striped hover>
+        <Table size="sm" bordered striped>
           <thead>
             <tr>
               <th>Player</th>
@@ -244,6 +261,27 @@ class FantasySport extends React.Component {
     );
   }
 
+  informationButton = () => {
+    return (
+      <div className="betting-header">
+        <h3>Daily Fantasy Sports</h3>
+        <OverlayTrigger
+          trigger={["focus", "hover"]}
+          placement="auto"
+          overlay={this.popover}
+        >
+          <Button
+            onClick={this.clickHandler}
+            className="info-button"
+            variant="outline-info"
+          >
+            i
+          </Button>
+        </OverlayTrigger>
+      </div>
+    );
+  };
+
   renderTable = () => {
     if (!this.state.selectedMatch || this.state.selectedMatch === "All Teams") {
       return this.dfsTable();
@@ -258,9 +296,7 @@ class FantasySport extends React.Component {
     return (
       <div>
         <div>{this.renderTeamSelect()}</div>
-        <div>
-          <h2>Daily Fantasy Sports</h2>
-        </div>
+        {this.informationButton()}
         <div>{this.renderTable()}</div>
       </div>
     );

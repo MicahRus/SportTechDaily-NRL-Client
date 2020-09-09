@@ -2,12 +2,33 @@
   height: 90vh;
 }
 
+h3,
+.h3 {
+  font-size: 3vh !important;
+  padding-right: 5px;
+}
+
 .nav-link {
   color: #3cb44c !important;
 }
 
+.info-button {
+  border-radius: 50% !important;
+  font-size: 18px;
+  width: 38px;
+  height: 38px;
+  font-family: Hoefler Text Bold Italic;
+}
+
 .navbar-nav > .active > a {
   background-color: silver !important;
+}
+
+.betting-header {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  margin: 5px;
 }
 
 #graphTypeSelector-tab-information {
@@ -26,22 +47,25 @@
   left: 0;
   position: sticky;
   top: auto;
-  width: 120px;
+  font-size: 1.4vh;
   overflow-x: auto;
   background: #eee;
+  z-index: -1;
+}
+
+tr th:first-of-type {
+  left: 0;
+  position: sticky;
+  top: auto;
+  overflow-x: auto;
+  background: #eee;
+  z-index: 9;
 }
 
 .tableFixHead {
   overflow-y: auto;
-  height: 1000px;
+  height: 80vh;
 }
-
-/* .tableFixHeadSmall {
-  overflow-y: auto;
-  height: 1000px;
-  font-size: 12px;
-  white-space: nowrap;
-} */
 
 th {
   position: sticky;
@@ -61,4 +85,29 @@ td {
 
 th {
   background: #eee;
+}
+
+td {
+  z-index: -2;
+  position: sticky;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(21, 18, 18);
+  width: 100vw;
+  color: whitesmoke;
+}
+
+.social {
+  color: rgb(228, 223, 223);
+  margin: 5px;
+}
+
+#copyright {
+  font-size: small;
+
+  opacity: 35%;
 }
