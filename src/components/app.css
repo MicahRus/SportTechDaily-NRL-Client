@@ -85,3 +85,12 @@ td {
   z-index: -2;
   position: sticky;
 }
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+  width: 100vw;
+  color: whitesmoke;
+}

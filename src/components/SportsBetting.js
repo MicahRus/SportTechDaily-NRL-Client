@@ -133,7 +133,6 @@ class SportsBetting extends React.Component {
     return (
       <div>
         <Select
-          style={{ zIndex: "999" }}
           options={this.state.matchNames}
           onChange={(e) =>
             this.setState({ selectedMatch: e.value }, () => {
