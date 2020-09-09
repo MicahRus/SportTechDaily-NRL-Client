@@ -1832,7 +1832,6 @@ class Home extends React.Component {
               title="Rankings"
               disabled={this.state.initialDisable}
             ></Tab>
-            {/* <Tab eventKey="information" title="i"></Tab> */}
           </Tabs>
         </Col>
       </Row>
@@ -1872,17 +1871,7 @@ class Home extends React.Component {
         placement="auto"
         overlay={popover}
       >
-        <Button
-          id="info"
-          variant="outline-info"
-          style={{
-            borderRadius: "50%",
-            fontSize: "18px",
-            width: "38px",
-            height: "38px",
-            fontFamily: "Hoefler Text Bold Italic",
-          }}
-        >
+        <Button className="info-button" variant="outline-info">
           i
         </Button>
       </OverlayTrigger>

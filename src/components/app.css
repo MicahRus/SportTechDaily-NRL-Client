@@ -2,12 +2,32 @@
   height: 90vh;
 }
 
+h3,
+.h3 {
+  font-size: 3vh !important;
+}
+
 .nav-link {
   color: #3cb44c !important;
 }
 
+.info-button {
+  border-radius: 50% !important;
+  font-size: 18px;
+  width: 38px;
+  height: 38px;
+  font-family: Hoefler Text Bold Italic;
+}
+
 .navbar-nav > .active > a {
   background-color: silver !important;
+}
+
+.betting-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px;
 }
 
 #graphTypeSelector-tab-information {
