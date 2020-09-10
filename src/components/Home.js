@@ -1865,11 +1865,9 @@ class Home extends React.Component {
   renderPopover = () => {
     const popover = (
       <Popover id="popover-information">
-        <Popover.Title as="h3">How we do it</Popover.Title>
         <Popover.Content>
-          For the selected player/team we will use either the players
-          percentile(bar, radar) or the actual stat numbers (rankings, scatter)
-          this data is based off the 2020 season
+          Our graphs are based on 2020 data. Check out this week's rugby league
+          analytics article
         </Popover.Content>
       </Popover>
     );
@@ -1879,7 +1877,15 @@ class Home extends React.Component {
         placement="auto"
         overlay={popover}
       >
-        <Button className="info-button" variant="outline-info">
+        <Button
+          onClick={() => {
+            window.location.assign(
+              "https://sporttechdaily.com/our-insights/your-edge-round-18/"
+            );
+          }}
+          className="info-button"
+          variant="outline-info"
+        >
           i
         </Button>
       </OverlayTrigger>

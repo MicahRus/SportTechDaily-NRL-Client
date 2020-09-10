@@ -3,14 +3,12 @@ import React from "react";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Tooltip from "react-bootstrap/Tooltip";
-import OverlayTrigger from "react-bootstrap/Overlay";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faEnvelopeSquare } from "@fortawesome/free-solid-svg-icons";
 
 import {
-  faFacebook,
   faTwitter,
   faInstagram,
   faSpotify,
