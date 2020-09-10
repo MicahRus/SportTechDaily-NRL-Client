@@ -4,7 +4,7 @@ import Home from "./Home";
 import MainNav from "./MainNav";
 import SportsBetting from "./SportsBetting";
 import FantasySport from "./FantasySport";
-import Footer from "./Footer";
+// import Footer from "./Footer";
 
 import "./app.css";
 
@@ -22,8 +22,8 @@ function App() {
           <Route exact path="/sportsbetting" component={SportsBetting} />
           <Route exact path="/fantasysport" component={FantasySport} />
         </Switch>
-        {/* <Footer /> */}
       </BrowserRouter>
+      {/* <Footer /> */}
     </Container>
   );
 }

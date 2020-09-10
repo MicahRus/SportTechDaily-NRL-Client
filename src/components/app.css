@@ -76,7 +76,7 @@ tr th:first-of-type {
 
 .tableFixHead {
   overflow-y: auto;
-  height: 80vh;
+  min-height: 80%;
 }
 
 th {
@@ -91,18 +91,13 @@ table {
 
 th,
 td {
-  padding: 8px 24px;
+  /* padding: 8px 24px; */
   white-space: nowrap;
 }
 
 th {
   background: #eee;
 }
-
-/* td {
-  z-index: -2;
-  position: sticky;
-} */
 
 .footer {
   display: flex;
@@ -111,15 +106,17 @@ th {
   background-color: rgb(21, 18, 18);
   width: 100%;
   color: whitesmoke;
+
+  margin-top: 2vh;
 }
 
 .social {
   color: rgb(228, 223, 223);
-  margin: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 #copyright {
   font-size: small;
-
   opacity: 35%;
 }

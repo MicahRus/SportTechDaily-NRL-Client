@@ -90,10 +90,10 @@ class Footer extends React.Component {
 
   render() {
     return (
-      <div>
+      <>
         {this.renderModal()}
         {this.renderFooter()}
-      </div>
+      </>
     );
   }
 }

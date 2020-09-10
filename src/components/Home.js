@@ -1,6 +1,7 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 
+import Footer from "./Footer";
 import logo from "./images/logo.svg";
 
 import {
@@ -919,8 +920,8 @@ class Home extends React.Component {
           </h3>
           <ResponsiveScatterPlot
             colors={{ scheme: "set1" }}
-            data={this.state.scatterGraphData || null}
-            margin={{ top: 30, right: 50, bottom: 30, left: 90 }}
+            data={this.state.scatterGraphData}
+            margin={{ top: 30, right: 50, bottom: 110, left: 90 }}
             xScale={{ type: "linear", min: "auto", max: "auto" }}
             xFormat={function (e) {
               return `${e}`;
@@ -1985,9 +1986,9 @@ class Home extends React.Component {
     });
 
     return (
-      <Col>
+      <Col lg={8}>
         <div className="tableFixHead">
-          <Table bordered striped hover={false}>
+          <Table size="sm" bordered striped>
             <thead>
               <tr>
                 <th>Rank</th>
@@ -2096,7 +2097,7 @@ class Home extends React.Component {
   // Renders the graph control to screen
   renderGraphControl = () => {
     return (
-      <Col sm={12} lg={4} md={4} xl={4} style={{ backgroundColor: "#eaecef" }}>
+      <Col style={{ backgroundColor: "#eaecef" }}>
         {/* {this.renderPlayerAndTeamTabs()} */}
         {this.renderGraphTabs()}
         <br></br>
@@ -2122,10 +2123,11 @@ class Home extends React.Component {
     }
     return (
       <>
-        <Row style={{ height: "100%" }}>
+        <Row style={{ minHeight: "90%" }}>
           {this.renderGraphControl()}
           {this.renderGraph()}
         </Row>
+        <Footer />
       </>
     );
   }

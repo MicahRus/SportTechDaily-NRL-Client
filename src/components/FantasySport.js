@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import { Table, OverlayTrigger, Button, Popover } from "react-bootstrap";
 
 import Select from "react-select";
+import Footer from "./Footer";
 
 import OwnershipPopover from "./Popovers/Ownership";
 import PredictedScorePopover from "./Popovers/PredictedScore";
@@ -295,6 +296,7 @@ class FantasySport extends React.Component {
         <div>{this.renderTeamSelect()}</div>
         {this.informationButton()}
         <div>{this.renderTable()}</div>
+        <Footer />
       </div>
     );
   }
