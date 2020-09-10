@@ -8,11 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faEnvelopeSquare } from "@fortawesome/free-solid-svg-icons";
 
-import {
-  faTwitter,
-  faInstagram,
-  faSpotify,
-} from "@fortawesome/free-brands-svg-icons";
+import { faTwitter, faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 import Modal from "react-bootstrap/Modal";
 
@@ -28,37 +24,34 @@ class Footer extends React.Component {
     return (
       <Row>
         <div className="footer">
-          <footer>
+          <div>
             <span id="copyright">
               © 2020 Sport Tech Daily. All rights reserved.
             </span>
-          </footer>
+          </div>
 
-          <footer>
+          <div>
             <a
               onClick={() => this.setState({ modalShow: true })}
               className="social"
             >
-              <FontAwesomeIcon icon={faEnvelopeSquare} size="2x" />
+              <FontAwesomeIcon
+                icon={faEnvelopeSquare}
+                style={{ fontSize: "3vh" }}
+              />
             </a>
 
             <a href="https://twitter.com/SportTechDaily/" className="social">
-              <FontAwesomeIcon icon={faTwitter} size="2x" />
+              <FontAwesomeIcon icon={faTwitter} style={{ fontSize: "3vh" }} />
             </a>
 
             <a
               href="https://www.linkedin.com/company/sport-tech-daily/"
               className="social"
             >
-              <FontAwesomeIcon icon={faInstagram} size="2x" />
+              <FontAwesomeIcon icon={faInstagram} style={{ fontSize: "3vh" }} />
             </a>
-            <a
-              href="https://open.spotify.com/show/0l3ZkhSc3w9MUQeu4Cz0nD?t=0"
-              className="social"
-            >
-              <FontAwesomeIcon icon={faSpotify} size="2x" />
-            </a>
-          </footer>
+          </div>
         </div>
       </Row>
     );
@@ -98,8 +91,8 @@ class Footer extends React.Component {
   render() {
     return (
       <div>
-        {this.renderFooter()}
         {this.renderModal()}
+        {this.renderFooter()}
       </div>
     );
   }

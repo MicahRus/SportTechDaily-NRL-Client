@@ -814,10 +814,9 @@ class Home extends React.Component {
 
   renderBarChart = () => {
     let stat = this.state.barStat1[0];
-    let lowerStat = stat[0].toLowerCase().split(" ").join("_");
     return (
       <Col lg={8} sm={12}>
-        <div className="graph-container" style={{ height: "80%" }}>
+        <div className="graph-container">
           <ResponsiveBar
             data={this.state.barGraphData}
             layout="horizontal"
@@ -912,16 +911,16 @@ class Home extends React.Component {
     let x = -1;
     let player1Matches = this.state.player1MatchDates;
     return (
-      <Col lg={8} sm={12} className="graph-container">
-        <div style={{ height: "80%" }}>
-          <h1 style={{ textAlign: "center" }}>
+      <Col lg={8} sm={12} style={{ height: "80vh", width: "100%" }}>
+        <div style={{ height: "100%", width: "100%" }}>
+          <h3 style={{ textAlign: "center" }}>
             {" "}
             {stat1} v {stat2}
-          </h1>
+          </h3>
           <ResponsiveScatterPlot
             colors={{ scheme: "set1" }}
             data={this.state.scatterGraphData || null}
-            margin={{ top: 60, right: 150, bottom: 80, left: 90 }}
+            margin={{ top: 30, right: 50, bottom: 30, left: 90 }}
             xScale={{ type: "linear", min: "auto", max: "auto" }}
             xFormat={function (e) {
               return `${e}`;

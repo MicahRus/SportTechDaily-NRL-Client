@@ -1,5 +1,18 @@
+html,
+body {
+  min-height: 700px;
+}
+body {
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100%;
+}
+
 .graph-container {
-  height: 90vh;
+  /* height: 90vh; */
+  height: 80%;
 }
 
 h3,
@@ -96,7 +109,7 @@ th {
   align-items: center;
   justify-content: center;
   background-color: rgb(21, 18, 18);
-  width: 100vw;
+  width: 100%;
   color: whitesmoke;
 }
 
