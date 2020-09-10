@@ -120,3 +120,7 @@ th {
   font-size: small;
   opacity: 35%;
 }
+
+.css-26l3qy-menu {
+  z-index: 9999 !important;
+}

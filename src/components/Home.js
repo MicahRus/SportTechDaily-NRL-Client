@@ -157,9 +157,6 @@ class Home extends React.Component {
       this.setState({ currentMatches: data.rows });
     } catch (err) {
       this.setState({ failedFetch: true });
-      alert(
-        "Sorry, something went wrong when trying to communicate with the database"
-      );
     }
   };
 
@@ -172,9 +169,6 @@ class Home extends React.Component {
       this.setState({ seasonPlayerStatsAverage: data.rows });
     } catch (err) {
       this.setState({ failedFetch: true });
-      alert(
-        "Sorry, something went wrong when trying to communicate with the database"
-      );
     }
   };
 
@@ -187,9 +181,6 @@ class Home extends React.Component {
       this.setState({ seasonPlayerStatsTotal: data.rows });
     } catch (err) {
       this.setState({ failedFetch: true });
-      alert(
-        "Sorry, something went wrong when trying to communicate with the database"
-      );
     }
   };
 
@@ -202,9 +193,6 @@ class Home extends React.Component {
       this.setState({ seasonPlayerPercentilesTotal: data.rows });
     } catch (err) {
       this.setState({ failedFetch: true });
-      alert(
-        "Sorry, something went wrong when trying to communicate with the database"
-      );
     }
   };
 
@@ -217,9 +205,6 @@ class Home extends React.Component {
       this.setState({ seasonPlayerPercentilesAverage: data.rows });
     } catch (err) {
       this.setState({ failedFetch: true });
-      alert(
-        "Sorry, something went wrong when trying to communicate with the database"
-      );
     }
   };
 
@@ -232,9 +217,6 @@ class Home extends React.Component {
       this.setState({ averagePlayerPercentiles: data.rows });
     } catch (err) {
       this.setState({ failedFetch: true });
-      alert(
-        "Sorry, something went wrong when trying to communicate with the database"
-      );
     }
   };
 
@@ -247,9 +229,6 @@ class Home extends React.Component {
       this.setState({ playerPercentiles: data.rows });
     } catch (err) {
       this.setState({ failedFetch: true });
-      alert(
-        "Sorry, something went wrong when trying to communicate with the database"
-      );
     }
   };
 
@@ -295,9 +274,6 @@ class Home extends React.Component {
       this.setScatterChartData();
     } catch (err) {
       this.setState({ failedFetch: true });
-      alert(
-        "Sorry, something went wrong when trying to communicate with the database"
-      );
     }
   };
 
@@ -310,9 +286,6 @@ class Home extends React.Component {
       this.setState({ players: data.rows });
     } catch (err) {
       this.setState({ failedFetch: true });
-      alert(
-        "Sorry, something went wrong when trying to communicate with the database"
-      );
     }
   };
 
@@ -332,9 +305,6 @@ class Home extends React.Component {
       this.getMatches("504870", "Kalyn Ponga", "player2");
     } catch (err) {
       this.setState({ failedFetch: true });
-      alert(
-        "Sorry, something went wrong when trying to communicate with the database"
-      );
     }
   };
 
@@ -372,9 +342,6 @@ class Home extends React.Component {
       this.setGraphData(playerName, playerNumber);
     } catch (err) {
       this.setState({ failedFetch: true });
-      alert(
-        "Sorry, something went wrong when trying to communicate with the database"
-      );
     }
   };
 
@@ -387,9 +354,6 @@ class Home extends React.Component {
       this.setState({ teams: data.rows });
     } catch (err) {
       this.setState({ failedFetch: true });
-      alert(
-        "Sorry, something went wrong when trying to communicate with the database"
-      );
     }
   };
 
@@ -2195,6 +2159,9 @@ class Home extends React.Component {
 
   render() {
     if (this.state.failedFetch) {
+      alert(
+        "Sorry, something went wrong when trying to communicate with the database"
+      );
       return (
         <div>
           {" "}
