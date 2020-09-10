@@ -38,7 +38,7 @@ class FantasySport extends React.Component {
 
   setMatchData = () => {
     const atsMatchArray = [];
-    let matchNames = [{ value: "All Teams", label: "All Teams" }];
+    let matchNames = [{ value: "All Games", label: "All Games" }];
 
     this.state.dfs_summary.map((item) => atsMatchArray.push(item.match_name));
 
@@ -280,7 +280,7 @@ class FantasySport extends React.Component {
   };
 
   renderTable = () => {
-    if (!this.state.selectedMatch || this.state.selectedMatch === "All Teams") {
+    if (!this.state.selectedMatch || this.state.selectedMatch === "All Games") {
       return this.dfsTable();
     }
     return this.filteredDfsTable();

@@ -109,7 +109,7 @@ class SportsBetting extends React.Component {
   // defines array for use in Match Select, data coming from ats_summary.match_name
   setMatchData = () => {
     const atsMatchArray = [];
-    let matchNames = [{ value: "All Teams", label: "All Teams" }];
+    let matchNames = [{ value: "All Games", label: "All Games" }];
 
     this.state.ats_summary.map((item) => atsMatchArray.push(item.match_name));
 
@@ -412,13 +412,13 @@ class SportsBetting extends React.Component {
     if (this.state.market === "ATS") {
       if (
         !this.state.selectedMatch ||
-        this.state.selectedMatch === "All Teams"
+        this.state.selectedMatch === "All Games"
       ) {
         return this.atsTable();
       }
       return this.filteredAtsTable();
     }
-    if (!this.state.selectedMatch || this.state.selectedMatch === "All Teams") {
+    if (!this.state.selectedMatch || this.state.selectedMatch === "All Games") {
       return this.ftsTable();
     }
     return this.filteredFtsTable();
