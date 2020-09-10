@@ -24,18 +24,15 @@ class FantasySport extends React.Component {
 
   popover = (
     <Popover id="popover-information">
-      <Popover.Title as="h3">All About Fantasy</Popover.Title>
       <Popover.Content>
         Check out our value plays article for the week
-        <br></br>
-        <strong>Click for more information</strong>
       </Popover.Content>
     </Popover>
   );
 
   clickHandler = () => {
     window.location.assign(
-      "https://sporttechdaily.com/our-insights/nrl-round-17-value-plays/"
+      "https://sporttechdaily.com/our-insights/nrl-round-18-value-plays/"
     );
   };
 

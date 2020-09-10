@@ -24,13 +24,9 @@ class SportsBetting extends React.Component {
 
   popover = (
     <Popover id="popover-information">
-      <Popover.Title as="h3">How do our models work?</Popover.Title>
       <Popover.Content>
-        We have worked on creating a predictive model for a long time and we are
-        pleased with how it is working, but constantly working to further
-        increase its potency.
-        <br></br>
-        <strong>Click for more information</strong>
+        Check out our article which explains how to get the most out of our
+        try-scorer models and analysis
       </Popover.Content>
     </Popover>
   );

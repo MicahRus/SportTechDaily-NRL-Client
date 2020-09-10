@@ -22,7 +22,7 @@ function App() {
           <Route exact path="/sportsbetting" component={SportsBetting} />
           <Route exact path="/fantasysport" component={FantasySport} />
         </Switch>
-        <Footer />
+        {/* <Footer /> */}
       </BrowserRouter>
     </Container>
   );
