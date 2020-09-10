@@ -1,7 +1,6 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 
-import Footer from "./Footer";
 import logo from "./images/logo.svg";
 
 import {
@@ -150,131 +149,248 @@ class Home extends React.Component {
   }
 
   getCurrentMatches = async () => {
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/current_matches`
-    );
-    const data = await response.json();
-    this.setState({ currentMatches: data.rows });
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/current_matches`
+      );
+      const data = await response.json();
+      this.setState({ currentMatches: data.rows });
+    } catch (err) {
+      this.setState({ failedFetch: true });
+      alert(
+        "Sorry, something went wrong when trying to communicate with the database"
+      );
+    }
   };
 
   getSeasonPlayerStatsAverage = async () => {
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/season/player/stats/average`
-    );
-    const data = await response.json();
-    this.setState({ seasonPlayerStatsAverage: data.rows });
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/season/player/stats/average`
+      );
+      const data = await response.json();
+      this.setState({ seasonPlayerStatsAverage: data.rows });
+    } catch (err) {
+      this.setState({ failedFetch: true });
+      alert(
+        "Sorry, something went wrong when trying to communicate with the database"
+      );
+    }
   };
 
   getSeasonPlayerStatsTotal = async () => {
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/season/player/stats/total`
-    );
-    const data = await response.json();
-    this.setState({ seasonPlayerStatsTotal: data.rows });
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/season/player/stats/total`
+      );
+      const data = await response.json();
+      this.setState({ seasonPlayerStatsTotal: data.rows });
+    } catch (err) {
+      this.setState({ failedFetch: true });
+      alert(
+        "Sorry, something went wrong when trying to communicate with the database"
+      );
+    }
   };
 
   getSeasonPlayerPercentilesTotal = async () => {
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/season/player/percentile/total`
-    );
-    const data = await response.json();
-    this.setState({ seasonPlayerPercentilesTotal: data.rows });
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/season/player/percentile/total`
+      );
+      const data = await response.json();
+      this.setState({ seasonPlayerPercentilesTotal: data.rows });
+    } catch (err) {
+      this.setState({ failedFetch: true });
+      alert(
+        "Sorry, something went wrong when trying to communicate with the database"
+      );
+    }
   };
 
   getSeasonPlayerPercentilesAverage = async () => {
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/season/player/percentile/average`
-    );
-    const data = await response.json();
-    this.setState({ seasonPlayerPercentilesAverage: data.rows });
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/season/player/percentile/average`
+      );
+      const data = await response.json();
+      this.setState({ seasonPlayerPercentilesAverage: data.rows });
+    } catch (err) {
+      this.setState({ failedFetch: true });
+      alert(
+        "Sorry, something went wrong when trying to communicate with the database"
+      );
+    }
   };
 
   getPlayerAveragePercentiles = async () => {
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/average_percentiles`
-    );
-    const data = await response.json();
-    this.setState({ averagePlayerPercentiles: data.rows });
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/average_percentiles`
+      );
+      const data = await response.json();
+      this.setState({ averagePlayerPercentiles: data.rows });
+    } catch (err) {
+      this.setState({ failedFetch: true });
+      alert(
+        "Sorry, something went wrong when trying to communicate with the database"
+      );
+    }
   };
 
   getPlayerPercentiles = async () => {
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/percentiles`
-    );
-    const data = await response.json();
-    this.setState({ playerPercentiles: data.rows });
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/percentiles`
+      );
+      const data = await response.json();
+      this.setState({ playerPercentiles: data.rows });
+    } catch (err) {
+      this.setState({ failedFetch: true });
+      alert(
+        "Sorry, something went wrong when trying to communicate with the database"
+      );
+    }
   };
 
-  // getCurrentStats = async () => {
-  //   const response = await fetch(
-  //     `${process.env.REACT_APP_BACKEND_URL}/currentstats`
-  //   );
-  //   const data = await response.json();
-
-  // };
-
   getMatches = async (playerId, playerName, playerNumber) => {
-    let playerId1 = playerId;
-    let playerId2 = null;
-    let selectedPlayers = JSON.parse(
-      JSON.stringify(this.state.selectedPlayers)
-    );
+    try {
+      let playerId1 = playerId;
+      let playerId2 = null;
+      let selectedPlayers = JSON.parse(
+        JSON.stringify(this.state.selectedPlayers)
+      );
 
-    if (playerNumber === "player1") {
-      playerId2 = this.state.selectedPlayers[1].value;
-      selectedPlayers[0].value = playerId;
-      selectedPlayers[0].label = playerName;
-    } else {
-      playerId2 = this.state.selectedPlayers[0].value;
-      selectedPlayers[1].value = playerId;
-      selectedPlayers[1].label = playerName;
-    }
+      if (playerNumber === "player1") {
+        playerId2 = this.state.selectedPlayers[1].value;
+        selectedPlayers[0].value = playerId;
+        selectedPlayers[0].label = playerName;
+      } else {
+        playerId2 = this.state.selectedPlayers[0].value;
+        selectedPlayers[1].value = playerId;
+        selectedPlayers[1].label = playerName;
+      }
 
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/matches?playerId1=${playerId1}&playerId2=${playerId2}`
-    );
-    const data = await response.json();
-    let player1Matches = [];
-    let player2Matches = [];
-    data.rows.map((match) => {
-      this.state.currentMatches.map((currentMatch) => {
-        if (currentMatch.match_id === match.match_id) {
-          if (match.player_id === playerId1) {
-            player1Matches.push(match);
-          } else {
-            player2Matches.push(match);
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/matches?playerId1=${playerId1}&playerId2=${playerId2}`
+      );
+      const data = await response.json();
+      let player1Matches = [];
+      let player2Matches = [];
+      data.rows.map((match) => {
+        this.state.currentMatches.map((currentMatch) => {
+          if (currentMatch.match_id === match.match_id) {
+            if (match.player_id === playerId1) {
+              player1Matches.push(match);
+            } else {
+              player2Matches.push(match);
+            }
           }
-        }
+          return null;
+        });
         return null;
       });
-      return null;
-    });
 
-    this.setState({ player1Matches, player2Matches, selectedPlayers });
-    this.setScatterChartData();
+      this.setState({ player1Matches, player2Matches, selectedPlayers });
+      this.setScatterChartData();
+    } catch (err) {
+      this.setState({ failedFetch: true });
+      alert(
+        "Sorry, something went wrong when trying to communicate with the database"
+      );
+    }
   };
 
   getAllPlayersData = async () => {
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/players`
-    );
-    const data = await response.json();
-    this.setState({ players: data.rows });
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/players`
+      );
+      const data = await response.json();
+      this.setState({ players: data.rows });
+    } catch (err) {
+      this.setState({ failedFetch: true });
+      alert(
+        "Sorry, something went wrong when trying to communicate with the database"
+      );
+    }
   };
 
   getCurrentPlayers = async () => {
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/currentplayers`
-    );
-    const data = await response.json();
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/currentplayers`
+      );
+      const data = await response.json();
 
-    this.setState({
-      currentPlayers: data.rows,
-    });
+      this.setState({
+        currentPlayers: data.rows,
+      });
 
-    this.setStats();
-    this.getMatches("500663", "James Tedesco", "player1");
-    this.getMatches("504870", "Kalyn Ponga", "player2");
+      this.setStats();
+      this.getMatches("500663", "James Tedesco", "player1");
+      this.getMatches("504870", "Kalyn Ponga", "player2");
+    } catch (err) {
+      this.setState({ failedFetch: true });
+      alert(
+        "Sorry, something went wrong when trying to communicate with the database"
+      );
+    }
+  };
+
+  // Retrieves individual player data from the database
+  getPlayerData = async (playerId, playerName, playerNumber) => {
+    try {
+      playerId = parseInt(playerId);
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/player/id?playerId=${playerId}`
+      );
+      const data = await response.json();
+
+      // Sets the state if the player number is 1
+      if (playerNumber === "player1") {
+        let player2 = this.state.currentPlayersData.player2;
+        this.setState({
+          currentPlayersData: {
+            player1: { data: data.rows, playerName: playerName },
+            player2: { data: player2.data, playerName: player2.playerName },
+          },
+        });
+      }
+
+      // Sets the state if the player number is 2
+      if (playerNumber === "player2") {
+        let player1 = this.state.currentPlayersData.player1;
+        this.setState({
+          currentPlayersData: {
+            player1: { data: player1.data, playerName: player1.playerName },
+            player2: { data: data.rows, playerName: playerName },
+          },
+        });
+      }
+
+      this.setGraphData(playerName, playerNumber);
+    } catch (err) {
+      this.setState({ failedFetch: true });
+      alert(
+        "Sorry, something went wrong when trying to communicate with the database"
+      );
+    }
+  };
+
+  getAllTeamsData = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/teams`
+      );
+      const data = await response.json();
+      this.setState({ teams: data.rows });
+    } catch (err) {
+      this.setState({ failedFetch: true });
+      alert(
+        "Sorry, something went wrong when trying to communicate with the database"
+      );
+    }
   };
 
   // Pushes all the stats from the player data into an array, and then sets it to state.
@@ -411,45 +527,6 @@ class Home extends React.Component {
     // This will get the 2 'Template players' we want to display
     this.getPlayerData("500663", "James Tedesco", "player1");
     this.getPlayerData("504870", "Kalyn Ponga", "player2");
-  };
-
-  // Retrieves individual player data from the database
-  getPlayerData = async (playerId, playerName, playerNumber) => {
-    playerId = parseInt(playerId);
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/player/id?playerId=${playerId}`
-    );
-    const data = await response.json();
-
-    // Sets the state if the player number is 1
-    if (playerNumber === "player1") {
-      let player2 = this.state.currentPlayersData.player2;
-      this.setState({
-        currentPlayersData: {
-          player1: { data: data.rows, playerName: playerName },
-          player2: { data: player2.data, playerName: player2.playerName },
-        },
-      });
-    }
-
-    // Sets the state if the player number is 2
-    if (playerNumber === "player2") {
-      let player1 = this.state.currentPlayersData.player1;
-      this.setState({
-        currentPlayersData: {
-          player1: { data: player1.data, playerName: player1.playerName },
-          player2: { data: data.rows, playerName: playerName },
-        },
-      });
-    }
-
-    this.setGraphData(playerName, playerNumber);
-  };
-
-  getAllTeamsData = async () => {
-    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/teams`);
-    const data = await response.json();
-    this.setState({ teams: data.rows });
   };
 
   componentDidUpdate() {
@@ -2117,6 +2194,19 @@ class Home extends React.Component {
   };
 
   render() {
+    if (this.state.failedFetch) {
+      return (
+        <div>
+          {" "}
+          <h1> Oh no....</h1>
+          <p>
+            {" "}
+            Sorry that something went wrong when trying to use our page, please
+            report the bug to us and we'll get straight on fixing it.
+          </p>
+        </div>
+      );
+    }
     if (this.state.redirect) {
       this.handleRefresh();
       return <Redirect to={this.state.redirect} />;
@@ -2127,7 +2217,6 @@ class Home extends React.Component {
           {this.renderGraphControl()}
           {this.renderGraph()}
         </Row>
-        <Footer />
       </>
     );
   }

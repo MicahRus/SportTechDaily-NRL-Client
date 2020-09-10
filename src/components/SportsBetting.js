@@ -2,7 +2,6 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import { Table, OverlayTrigger, Button, Popover } from "react-bootstrap";
 import Select from "react-select";
-import Footer from "./Footer";
 
 import AtsBestHistoricalPopover from "./Popovers/AtsBestHistorical";
 import AtsBestModelPopover from "./Popovers/AtsBestModel";
@@ -644,7 +643,6 @@ class SportsBetting extends React.Component {
         <div>{this.renderMarketSelect()}</div>
         <div>{this.renderTeamSelect()}</div>
         <div>{this.renderTable()}</div>
-        <Footer />
       </>
     );
   }
