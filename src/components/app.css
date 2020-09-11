@@ -55,44 +55,26 @@ h3,
   font-size: 1.5vh;
 }
 
-.playerFix {
-  position: sticky;
-  left: 0;
-  top: auto;
-  font-size: 1.4vh;
-  overflow-x: auto;
-  background: #eee;
-  z-index: 3;
+/* First container of table */
+/* .sc-hKFyIo {
+  background-color: red;
+} */
+
+/* Each Row of the table */
+/* .sc-dlnjPT {
+  background-color: red !important;
+} */
+
+/* Each cell of the table */
+.sc-gtssRu {
+  border-right: solid 0.1px #e5e5e5;
+  font-size: 1.5vh;
 }
 
-tr th:first-of-type {
-  position: sticky;
-  left: 0;
-  background: #eee;
-  z-index: 9;
-}
-
-th {
-  position: sticky;
-  left: auto;
-  top: 0;
-  overflow-x: auto;
-}
-
+/* The div that wraps the table */
 .tableFixHead {
-  overflow-y: auto;
-  min-height: 80%;
-}
-
-table {
-  border-collapse: collapse;
   width: 100%;
-}
-
-th,
-td {
-  padding: 8px 24px;
-  white-space: nowrap;
+  height: 73vh;
 }
 
 .footer {
@@ -102,7 +84,6 @@ td {
   background-color: rgb(21, 18, 18);
   width: 100%;
   color: whitesmoke;
-
   margin-top: 2vh;
 }
 

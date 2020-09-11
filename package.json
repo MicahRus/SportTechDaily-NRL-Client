@@ -23,6 +23,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
     "react-select": "^3.1.0",
+    "react-sticky-table": "^5.1.7",
     "save-svg-as-png": "^1.4.17"
   },
   "scripts": {
