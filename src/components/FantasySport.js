@@ -34,7 +34,7 @@ class FantasySport extends React.Component {
 
   clickHandler = () => {
     window.location.assign(
-      "https://sporttechdaily.com/our-insights/nrl-round-18-value-plays/"
+      "https://sporttechdaily.com/our-insights/round-18-value-plays/"
     );
   };
 
