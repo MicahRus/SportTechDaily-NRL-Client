@@ -2,6 +2,7 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 
 import logo from "./images/logo.svg";
+import { StickyTable, Cell, Row as TableRow } from "react-sticky-table";
 
 import {
   Form,
@@ -2027,31 +2028,26 @@ class Home extends React.Component {
     });
 
     return (
-      <Col lg={8}>
-        <div className="tableFixHead">
-          <Table size="sm" bordered striped>
-            <thead>
-              <tr>
-                <th>Rank</th>
-                <th>Name</th>
-                <th>Games Played</th>
-                <th>{this.state.barStat1}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {topPlayersArray.map((player, index) => {
-                return (
-                  <tr>
-                    <td>{index + 1}</td>
-                    <td> {player.player_name}</td>
-                    <td>{player.games}</td>
-                    <td>{player[stat]}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </Table>
-        </div>
+      <Col lg={8} style={{ maxHeight: "100%" }}>
+        <StickyTable style={{ maxHeight: "60vh" }}>
+          <TableRow>
+            <Cell>Rank</Cell>
+            <Cell>Name</Cell>
+            <Cell>Games Played</Cell>
+            <Cell>{this.state.barStat1}</Cell>
+          </TableRow>
+
+          {topPlayersArray.map((player, index) => {
+            return (
+              <TableRow>
+                <Cell>{index + 1}</Cell>
+                <Cell> {player.player_name}</Cell>
+                <Cell>{player.games}</Cell>
+                <Cell>{player[stat]}</Cell>
+              </TableRow>
+            );
+          })}
+        </StickyTable>
       </Col>
     );
   };
@@ -2177,7 +2173,7 @@ class Home extends React.Component {
     }
     return (
       <>
-        <Row style={{ minHeight: "90%" }}>
+        <Row style={{ height: "90%" }}>
           {this.renderGraphControl()}
           {this.renderGraph()}
         </Row>
