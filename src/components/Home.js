@@ -2159,9 +2159,6 @@ class Home extends React.Component {
 
   render() {
     if (this.state.failedFetch) {
-      alert(
-        "Sorry, something went wrong when trying to communicate with the database"
-      );
       return (
         <div>
           {" "}
