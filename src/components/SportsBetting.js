@@ -85,8 +85,19 @@ class SportsBetting extends React.Component {
     console.log(this.state);
   }
   componentDidMount() {
-    this.getAtsData();
+    if (localStorage.getItem("AtsData")) {
+      this.setState({
+        ats_summary: JSON.parse(localStorage.getItem("AtsData")),
+      });
+    }
+
+    if (localStorage.getItem("FtsData")) {
+      this.setState({
+        fts_summary: JSON.parse(localStorage.getItem("FtsData")),
+      });
+    }
     this.getFtsData();
+    this.getAtsData();
   }
 
   // Retrieves data from ats_summary table
@@ -95,6 +106,7 @@ class SportsBetting extends React.Component {
       `${process.env.REACT_APP_BACKEND_URL}/ats_summary`
     );
     const data = await response.json();
+    localStorage.setItem("AtsData", JSON.stringify(data.rows));
     this.setState({ ats_summary: data.rows }, () => this.setMatchData());
   };
 
@@ -104,6 +116,7 @@ class SportsBetting extends React.Component {
       `${process.env.REACT_APP_BACKEND_URL}/fts_summary`
     );
     const data = await response.json();
+    localStorage.setItem("FtsData", JSON.stringify(data.rows));
     this.setState({ fts_summary: data.rows });
   };
 

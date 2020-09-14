@@ -21,8 +21,24 @@ class FantasySport extends React.Component {
   }
 
   componentDidMount() {
+    if (localStorage.getItem("DfsData")) {
+      this.setState({
+        dfs_summary: JSON.parse(localStorage.getItem("DfsData")),
+      });
+    }
     this.getDfsData();
   }
+
+  getDfsData = async () => {
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/dfs_summary`
+    );
+    const data = await response.json();
+    localStorage.setItem("DfsData", JSON.stringify(data.rows));
+    this.setState({ dfs_summary: data.rows }, () => {
+      this.setMatchData();
+    });
+  };
 
   popover = (
     <Popover id="popover-information">
@@ -81,16 +97,6 @@ class FantasySport extends React.Component {
     });
     this.setState({ filteredMatches });
     return null;
-  };
-
-  getDfsData = async () => {
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/dfs_summary`
-    );
-    const data = await response.json();
-    this.setState({ dfs_summary: data.rows }, () => {
-      this.setMatchData();
-    });
   };
 
   styleDFSConditionalFormatting = (item) => {
