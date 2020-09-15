@@ -125,7 +125,7 @@ class FantasySport extends React.Component {
 
   filteredDfsTable = () => {
     return (
-      <div className="tableFixHead" style={{ height: "80vh" }}>
+      <div className="tableFixHead" style={{ height: "77vh" }}>
         <StickyTable>
           <Row>
             <Cell>Player</Cell>
@@ -192,7 +192,7 @@ class FantasySport extends React.Component {
 
   dfsTable() {
     return (
-      <div className="tableFixHead" style={{ height: "80vh" }}>
+      <div className="tableFixHead" style={{ height: "77vh" }}>
         <StickyTable>
           <Row>
             <Cell>Player</Cell>
