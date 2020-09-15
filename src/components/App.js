@@ -19,9 +19,9 @@ function App() {
       <BrowserRouter>
         <MainNav />
         <Switch>
-          <Route exact path="/" component={Home} />
+          {/* <Route exact path="/" component={Home} /> */}
+          <Route exact path="/" component={FantasySport} />
           <Route exact path="/sportsbetting" component={SportsBetting} />
-          <Route exact path="/fantasysport" component={FantasySport} />
           <Route component={PageNotFound} />
         </Switch>
         <Footer />

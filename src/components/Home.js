@@ -734,8 +734,6 @@ class Home extends React.Component {
           classNamePrefix="select"
           value={this.state.selectedPlayers}
           onChange={(players) => {
-            console.log(players.length);
-            console.log(players);
             if (players.length <= 5) {
               this.setBarChartData(players);
             } else {
