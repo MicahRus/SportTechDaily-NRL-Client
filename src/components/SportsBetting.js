@@ -1,6 +1,14 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import { OverlayTrigger, Button, Popover } from "react-bootstrap";
+import {
+  OverlayTrigger,
+  Button,
+  Popover,
+  Row as BSRow,
+  Col,
+} from "react-bootstrap";
+
+import SideBar from "./Carousel";
 import { StickyTable, Row, Cell } from "react-sticky-table";
 import Select from "react-select";
 
@@ -213,199 +221,213 @@ class SportsBetting extends React.Component {
 
   filteredAtsTable = () => {
     return (
-      <div>
-        {this.informationButton()}
-        <div className="tableFixHead">
-          <StickyTable>
-            <Row>
-              <Cell>Player</Cell>
-              <OverlayTrigger
-                placement="top"
-                trigger={["focus", "hover"]}
-                overlay={BestOddsPopover}
-              >
-                <Cell>Best Odds</Cell>
-              </OverlayTrigger>
-              <OverlayTrigger
-                placement="top"
-                trigger={["focus", "hover"]}
-                overlay={AtsBestHistoricalPopover}
-              >
-                <Cell>
-                  Highest/<br></br>Historical (%)
-                </Cell>
-              </OverlayTrigger>
-              <OverlayTrigger
-                placement="top"
-                trigger={["focus", "hover"]}
-                overlay={AtsBestModelPopover}
-              >
-                <Cell>
-                  Highest/<br></br>Model (%)
-                </Cell>
-              </OverlayTrigger>
-              <OverlayTrigger
-                placement="top"
-                trigger={["focus", "hover"]}
-                overlay={HistoricalPopover}
-              >
-                <Cell>
-                  ATS<br></br>Historical
-                </Cell>
-              </OverlayTrigger>
-              <OverlayTrigger
-                placement="top"
-                trigger={["focus", "hover"]}
-                overlay={ModelPopover}
-              >
-                <Cell>
-                  ATS<br></br>Model
-                </Cell>
-              </OverlayTrigger>
-              <Cell>SportsBet</Cell>
-              <Cell>Neds</Cell>
-              <Cell>PointsBet</Cell>
-              <Cell>TopSport</Cell>
-              <Cell>Team</Cell>
-              <Cell>Match</Cell>
-            </Row>
-            {this.state.filteredMatches?.map((item) => {
-              return (
-                <Row>
-                  <Cell className="playerFix">{item.player}</Cell>
-                  <Cell>{item.highest || "N/A"}</Cell>
-                  <Cell style={this.stylePercentages(item.high_emp)}>
-                    {Math.round(item.high_emp * 100) || "N/A"}
+      <BSRow>
+        <Col sm={12} lg={9}>
+          <div className="tableFixHead">
+            <StickyTable>
+              <Row>
+                <Cell>Player</Cell>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={BestOddsPopover}
+                >
+                  <Cell>Best Odds</Cell>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={AtsBestHistoricalPopover}
+                >
+                  <Cell>
+                    Highest/<br></br>Historical (%)
                   </Cell>
-                  <Cell style={this.stylePercentages(item.high_mod)}>
-                    {Math.round(item.high_mod * 100) || "N/A"}
+                </OverlayTrigger>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={AtsBestModelPopover}
+                >
+                  <Cell>
+                    Highest/<br></br>Model (%)
                   </Cell>
-                  <Cell>{item.ats_empirical || "N/A"}</Cell>
-                  <Cell>{item.ats_model || "N/A"}</Cell>
-                  <Cell style={this.styleHighestOdds(item.sb, item.highest)}>
-                    {item.sb || "N/A"}
+                </OverlayTrigger>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={HistoricalPopover}
+                >
+                  <Cell>
+                    ATS<br></br>Historical
                   </Cell>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={ModelPopover}
+                >
+                  <Cell>
+                    ATS<br></br>Model
+                  </Cell>
+                </OverlayTrigger>
+                <Cell>SportsBet</Cell>
+                <Cell>Neds</Cell>
+                <Cell>PointsBet</Cell>
+                <Cell>TopSport</Cell>
+                <Cell>Team</Cell>
+                <Cell>Match</Cell>
+              </Row>
+              {this.state.filteredMatches?.map((item) => {
+                return (
+                  <Row>
+                    <Cell className="playerFix">{item.player}</Cell>
+                    <Cell>{item.highest || "N/A"}</Cell>
+                    <Cell style={this.stylePercentages(item.high_emp)}>
+                      {Math.round(item.high_emp * 100) || "N/A"}
+                    </Cell>
+                    <Cell style={this.stylePercentages(item.high_mod)}>
+                      {Math.round(item.high_mod * 100) || "N/A"}
+                    </Cell>
+                    <Cell>{item.ats_empirical || "N/A"}</Cell>
+                    <Cell>{item.ats_model || "N/A"}</Cell>
+                    <Cell style={this.styleHighestOdds(item.sb, item.highest)}>
+                      {item.sb || "N/A"}
+                    </Cell>
 
-                  <Cell style={this.styleHighestOdds(item.neds, item.highest)}>
-                    {item.neds || "N/A"}
-                  </Cell>
-                  <Cell
-                    style={this.styleHighestOdds(item.pointsbet, item.highest)}
-                  >
-                    {item.pointsbet || "N/A"}
-                  </Cell>
-                  <Cell
-                    style={this.styleHighestOdds(item.topsport, item.highest)}
-                  >
-                    {item.topsport || "N/A"}
-                  </Cell>
-                  <Cell>{item.team}</Cell>
-                  <Cell>{item.match_name}</Cell>
-                </Row>
-              );
-            })}
-          </StickyTable>
-        </div>
-      </div>
+                    <Cell
+                      style={this.styleHighestOdds(item.neds, item.highest)}
+                    >
+                      {item.neds || "N/A"}
+                    </Cell>
+                    <Cell
+                      style={this.styleHighestOdds(
+                        item.pointsbet,
+                        item.highest
+                      )}
+                    >
+                      {item.pointsbet || "N/A"}
+                    </Cell>
+                    <Cell
+                      style={this.styleHighestOdds(item.topsport, item.highest)}
+                    >
+                      {item.topsport || "N/A"}
+                    </Cell>
+                    <Cell>{item.team}</Cell>
+                    <Cell>{item.match_name}</Cell>
+                  </Row>
+                );
+              })}
+            </StickyTable>
+          </div>
+        </Col>
+        <SideBar />
+      </BSRow>
     );
   };
 
   atsTable = () => {
     return (
-      <div>
-        {this.informationButton()}
-        <div className="tableFixHead">
-          <StickyTable>
-            <Row>
-              <Cell>Player</Cell>
-              <OverlayTrigger
-                placement="top"
-                trigger={["focus", "hover"]}
-                overlay={BestOddsPopover}
-              >
-                <Cell>Best Odds</Cell>
-              </OverlayTrigger>
-              <OverlayTrigger
-                placement="top"
-                trigger={["focus", "hover"]}
-                overlay={AtsBestHistoricalPopover}
-              >
-                <Cell>
-                  Highest/<br></br>Historical (%)
-                </Cell>
-              </OverlayTrigger>
-              <OverlayTrigger
-                placement="top"
-                trigger={["focus", "hover"]}
-                overlay={AtsBestModelPopover}
-              >
-                <Cell>
-                  Highest/<br></br>Model (%)
-                </Cell>
-              </OverlayTrigger>
-              <OverlayTrigger
-                placement="top"
-                trigger={["focus", "hover"]}
-                overlay={HistoricalPopover}
-              >
-                <Cell>
-                  ATS<br></br>Historical
-                </Cell>
-              </OverlayTrigger>
-              <OverlayTrigger
-                placement="top"
-                trigger={["focus", "hover"]}
-                overlay={ModelPopover}
-              >
-                <Cell>
-                  ATS<br></br>Model
-                </Cell>
-              </OverlayTrigger>
-              <Cell>SportsBet</Cell>
-              <Cell>Neds</Cell>
-              <Cell>PointsBet</Cell>
-              <Cell>TopSport</Cell>
-              <Cell>Team</Cell>
-              <Cell>Match</Cell>
-            </Row>
+      <BSRow>
+        <Col sm={12} lg={9}>
+          <div className="tableFixHead">
+            <StickyTable>
+              <Row>
+                <Cell>Player</Cell>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={BestOddsPopover}
+                >
+                  <Cell>Best Odds</Cell>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={AtsBestHistoricalPopover}
+                >
+                  <Cell>
+                    Highest/<br></br>Historical (%)
+                  </Cell>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={AtsBestModelPopover}
+                >
+                  <Cell>
+                    Highest/<br></br>Model (%)
+                  </Cell>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={HistoricalPopover}
+                >
+                  <Cell>
+                    ATS<br></br>Historical
+                  </Cell>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={ModelPopover}
+                >
+                  <Cell>
+                    ATS<br></br>Model
+                  </Cell>
+                </OverlayTrigger>
+                <Cell>SportsBet</Cell>
+                <Cell>Neds</Cell>
+                <Cell>PointsBet</Cell>
+                <Cell>TopSport</Cell>
+                <Cell>Team</Cell>
+                <Cell>Match</Cell>
+              </Row>
 
-            {this.state.ats_summary.map((item) => {
-              return (
-                <Row>
-                  <Cell className="playerFix">{item.player}</Cell>
-                  <Cell>{item.highest || "N/A"}</Cell>
-                  <Cell style={this.stylePercentages(item.high_emp)}>
-                    {Math.round(item.high_emp * 100) || "N/A"}
-                  </Cell>
-                  <Cell style={this.stylePercentages(item.high_mod)}>
-                    {Math.round(item.high_mod * 100) || "N/A"}
-                  </Cell>
-                  <Cell>{item.ats_empirical || "N/A"}</Cell>
-                  <Cell>{item.ats_model || "N/A"}</Cell>
-                  <Cell style={this.styleHighestOdds(item.sb, item.highest)}>
-                    {item.sb || "N/A"}
-                  </Cell>
-                  <Cell style={this.styleHighestOdds(item.neds, item.highest)}>
-                    {item.neds || "N/A"}
-                  </Cell>
-                  <Cell
-                    style={this.styleHighestOdds(item.pointsbet, item.highest)}
-                  >
-                    {item.pointsbet || "N/A"}
-                  </Cell>
-                  <Cell
-                    style={this.styleHighestOdds(item.topsport, item.highest)}
-                  >
-                    {item.topsport || "N/A"}
-                  </Cell>
-                  <Cell>{item.team}</Cell>
-                  <Cell>{item.match_name}</Cell>
-                </Row>
-              );
-            })}
-          </StickyTable>
-        </div>
-      </div>
+              {this.state.ats_summary.map((item) => {
+                return (
+                  <Row>
+                    <Cell className="playerFix">{item.player}</Cell>
+                    <Cell>{item.highest || "N/A"}</Cell>
+                    <Cell style={this.stylePercentages(item.high_emp)}>
+                      {Math.round(item.high_emp * 100) || "N/A"}
+                    </Cell>
+                    <Cell style={this.stylePercentages(item.high_mod)}>
+                      {Math.round(item.high_mod * 100) || "N/A"}
+                    </Cell>
+                    <Cell>{item.ats_empirical || "N/A"}</Cell>
+                    <Cell>{item.ats_model || "N/A"}</Cell>
+                    <Cell style={this.styleHighestOdds(item.sb, item.highest)}>
+                      {item.sb || "N/A"}
+                    </Cell>
+                    <Cell
+                      style={this.styleHighestOdds(item.neds, item.highest)}
+                    >
+                      {item.neds || "N/A"}
+                    </Cell>
+                    <Cell
+                      style={this.styleHighestOdds(
+                        item.pointsbet,
+                        item.highest
+                      )}
+                    >
+                      {item.pointsbet || "N/A"}
+                    </Cell>
+                    <Cell
+                      style={this.styleHighestOdds(item.topsport, item.highest)}
+                    >
+                      {item.topsport || "N/A"}
+                    </Cell>
+                    <Cell>{item.team}</Cell>
+                    <Cell>{item.match_name}</Cell>
+                  </Row>
+                );
+              })}
+            </StickyTable>
+          </div>
+        </Col>
+        <SideBar />
+      </BSRow>
     );
   };
 
@@ -427,199 +449,213 @@ class SportsBetting extends React.Component {
 
   ftsTable = () => {
     return (
-      <div>
-        {this.informationButton()}
-        <div className="tableFixHead">
-          <StickyTable>
-            <Row>
-              <Cell>Player</Cell>
-              <OverlayTrigger
-                placement="top"
-                trigger={["focus", "hover"]}
-                overlay={BestOddsPopover}
-              >
-                <Cell>Best Odds</Cell>
-              </OverlayTrigger>
-              <OverlayTrigger
-                placement="top"
-                trigger={["focus", "hover"]}
-                overlay={FtsBestHistoricalPopover}
-              >
-                <Cell>
-                  Highest/<br></br>Historical (%)
-                </Cell>
-              </OverlayTrigger>
-              <OverlayTrigger
-                placement="top"
-                trigger={["focus", "hover"]}
-                overlay={FtsBestModelPopover}
-              >
-                <Cell>
-                  Highest/<br></br>Model (%)
-                </Cell>
-              </OverlayTrigger>
-              <OverlayTrigger
-                placement="top"
-                trigger={["focus", "hover"]}
-                overlay={HistoricalPopover}
-              >
-                <Cell>
-                  FTS<br></br>Historical
-                </Cell>
-              </OverlayTrigger>
-              <OverlayTrigger
-                placement="top"
-                trigger={["focus", "hover"]}
-                overlay={ModelPopover}
-              >
-                <Cell>
-                  FTS<br></br>Model
-                </Cell>
-              </OverlayTrigger>
-              <Cell>SportsBet</Cell>
-              <Cell>Neds</Cell>
-              <Cell>PointsBet</Cell>
-              <Cell>TopSport</Cell>
-              <Cell>Team</Cell>
-              <Cell>Match</Cell>
-            </Row>
+      <BSRow>
+        <Col sm={12} lg={9}>
+          <div className="tableFixHead">
+            <StickyTable>
+              <Row>
+                <Cell>Player</Cell>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={BestOddsPopover}
+                >
+                  <Cell>Best Odds</Cell>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={FtsBestHistoricalPopover}
+                >
+                  <Cell>
+                    Highest/<br></br>Historical (%)
+                  </Cell>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={FtsBestModelPopover}
+                >
+                  <Cell>
+                    Highest/<br></br>Model (%)
+                  </Cell>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={HistoricalPopover}
+                >
+                  <Cell>
+                    FTS<br></br>Historical
+                  </Cell>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={ModelPopover}
+                >
+                  <Cell>
+                    FTS<br></br>Model
+                  </Cell>
+                </OverlayTrigger>
+                <Cell>SportsBet</Cell>
+                <Cell>Neds</Cell>
+                <Cell>PointsBet</Cell>
+                <Cell>TopSport</Cell>
+                <Cell>Team</Cell>
+                <Cell>Match</Cell>
+              </Row>
 
-            {this.state.fts_summary.map((item) => {
-              return (
-                <Row>
-                  <Cell className="playerFix">{item.player}</Cell>
-                  <Cell>{item.highest || "N/A"}</Cell>
-                  <Cell style={this.stylePercentages(item.high_emp)}>
-                    {Math.round(item.high_emp * 100) || "N/A"}
-                  </Cell>
-                  <Cell style={this.stylePercentages(item.high_mod)}>
-                    {Math.round(item.high_mod * 100) || "N/A"}
-                  </Cell>
-                  <Cell>{item.fts_empirical || "N/A"}</Cell>
-                  <Cell>{item.fts_model || "N/A"}</Cell>
-                  <Cell style={this.styleHighestOdds(item.sb, item.highest)}>
-                    {item.sb || "N/A"}
-                  </Cell>
-                  <Cell style={this.styleHighestOdds(item.neds, item.highest)}>
-                    {item.neds || "N/A"}
-                  </Cell>
-                  <Cell
-                    style={this.styleHighestOdds(item.pointsbet, item.highest)}
-                  >
-                    {item.pointsbet || "N/A"}
-                  </Cell>
-                  <Cell
-                    style={this.styleHighestOdds(item.topsport, item.highest)}
-                  >
-                    {item.topsport || "N/A"}
-                  </Cell>
-                  <Cell>{item.team}</Cell>
-                  <Cell>{item.match_name}</Cell>
-                </Row>
-              );
-            })}
-          </StickyTable>
-        </div>
-      </div>
+              {this.state.fts_summary.map((item) => {
+                return (
+                  <Row>
+                    <Cell className="playerFix">{item.player}</Cell>
+                    <Cell>{item.highest || "N/A"}</Cell>
+                    <Cell style={this.stylePercentages(item.high_emp)}>
+                      {Math.round(item.high_emp * 100) || "N/A"}
+                    </Cell>
+                    <Cell style={this.stylePercentages(item.high_mod)}>
+                      {Math.round(item.high_mod * 100) || "N/A"}
+                    </Cell>
+                    <Cell>{item.fts_empirical || "N/A"}</Cell>
+                    <Cell>{item.fts_model || "N/A"}</Cell>
+                    <Cell style={this.styleHighestOdds(item.sb, item.highest)}>
+                      {item.sb || "N/A"}
+                    </Cell>
+                    <Cell
+                      style={this.styleHighestOdds(item.neds, item.highest)}
+                    >
+                      {item.neds || "N/A"}
+                    </Cell>
+                    <Cell
+                      style={this.styleHighestOdds(
+                        item.pointsbet,
+                        item.highest
+                      )}
+                    >
+                      {item.pointsbet || "N/A"}
+                    </Cell>
+                    <Cell
+                      style={this.styleHighestOdds(item.topsport, item.highest)}
+                    >
+                      {item.topsport || "N/A"}
+                    </Cell>
+                    <Cell>{item.team}</Cell>
+                    <Cell>{item.match_name}</Cell>
+                  </Row>
+                );
+              })}
+            </StickyTable>
+          </div>
+        </Col>
+        <SideBar />
+      </BSRow>
     );
   };
 
   filteredFtsTable = () => {
     return (
-      <div>
-        {this.informationButton()}
-        <div className="tableFixHead">
-          <StickyTable>
-            <Row>
-              <Cell>Player</Cell>
-              <OverlayTrigger
-                placement="top"
-                trigger={["focus", "hover"]}
-                overlay={BestOddsPopover}
-              >
-                <Cell>Best Odds</Cell>
-              </OverlayTrigger>
-              <OverlayTrigger
-                placement="top"
-                trigger={["focus", "hover"]}
-                overlay={AtsBestHistoricalPopover}
-              >
-                <Cell>
-                  Highest/<br></br>Historical (%)
-                </Cell>
-              </OverlayTrigger>
-              <OverlayTrigger
-                placement="top"
-                trigger={["focus", "hover"]}
-                overlay={AtsBestModelPopover}
-              >
-                <Cell>
-                  Highest/<br></br>Model (%)
-                </Cell>
-              </OverlayTrigger>
-              <OverlayTrigger
-                placement="top"
-                trigger={["focus", "hover"]}
-                overlay={HistoricalPopover}
-              >
-                <Cell>
-                  FTS<br></br>Historical
-                </Cell>
-              </OverlayTrigger>
-              <OverlayTrigger
-                placement="top"
-                trigger={["focus", "hover"]}
-                overlay={ModelPopover}
-              >
-                <Cell>
-                  FTS<br></br>Model
-                </Cell>
-              </OverlayTrigger>
-              <Cell>SportsBet</Cell>
-              <Cell>Neds</Cell>
-              <Cell>PointsBet</Cell>
-              <Cell>TopSport</Cell>
-              <Cell>Team</Cell>
-              <Cell>Match</Cell>
-            </Row>
+      <BSRow>
+        <Col sm={12} lg={9}>
+          <div className="tableFixHead">
+            <StickyTable>
+              <Row>
+                <Cell>Player</Cell>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={BestOddsPopover}
+                >
+                  <Cell>Best Odds</Cell>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={AtsBestHistoricalPopover}
+                >
+                  <Cell>
+                    Highest/<br></br>Historical (%)
+                  </Cell>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={AtsBestModelPopover}
+                >
+                  <Cell>
+                    Highest/<br></br>Model (%)
+                  </Cell>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={HistoricalPopover}
+                >
+                  <Cell>
+                    FTS<br></br>Historical
+                  </Cell>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={ModelPopover}
+                >
+                  <Cell>
+                    FTS<br></br>Model
+                  </Cell>
+                </OverlayTrigger>
+                <Cell>SportsBet</Cell>
+                <Cell>Neds</Cell>
+                <Cell>PointsBet</Cell>
+                <Cell>TopSport</Cell>
+                <Cell>Team</Cell>
+                <Cell>Match</Cell>
+              </Row>
 
-            {this.state.filteredMatches?.map((item) => {
-              return (
-                <Row>
-                  <Cell className="playerFix">{item.player}</Cell>
-                  <Cell>{item.highest || "N/A"}</Cell>
-                  <Cell style={this.stylePercentages(item.high_emp)}>
-                    {Math.round(item.high_emp * 100) || "N/A"}
-                  </Cell>
-                  <Cell style={this.stylePercentages(item.high_mod)}>
-                    {Math.round(item.high_mod * 100) || "N/A"}
-                  </Cell>
-                  <Cell>{item.fts_empirical || "N/A"}</Cell>
-                  <Cell>{item.fts_model || "N/A"}</Cell>
-                  <Cell style={this.styleHighestOdds(item.sb, item.highest)}>
-                    {item.sb || "N/A"}
-                  </Cell>
-                  <Cell style={this.styleHighestOdds(item.neds, item.highest)}>
-                    {item.neds || "N/A"}
-                  </Cell>
-                  <Cell
-                    style={this.styleHighestOdds(item.pointsbet, item.highest)}
-                  >
-                    {item.pointsbet || "N/A"}
-                  </Cell>
-                  <Cell
-                    style={this.styleHighestOdds(item.topsport, item.highest)}
-                  >
-                    {item.topsport || "N/A"}
-                  </Cell>
-                  <Cell>{item.team}</Cell>
-                  <Cell>{item.match_name}</Cell>
-                </Row>
-              );
-            })}
-          </StickyTable>
-        </div>
-      </div>
+              {this.state.filteredMatches?.map((item) => {
+                return (
+                  <Row>
+                    <Cell className="playerFix">{item.player}</Cell>
+                    <Cell>{item.highest || "N/A"}</Cell>
+                    <Cell style={this.stylePercentages(item.high_emp)}>
+                      {Math.round(item.high_emp * 100) || "N/A"}
+                    </Cell>
+                    <Cell style={this.stylePercentages(item.high_mod)}>
+                      {Math.round(item.high_mod * 100) || "N/A"}
+                    </Cell>
+                    <Cell>{item.fts_empirical || "N/A"}</Cell>
+                    <Cell>{item.fts_model || "N/A"}</Cell>
+                    <Cell style={this.styleHighestOdds(item.sb, item.highest)}>
+                      {item.sb || "N/A"}
+                    </Cell>
+                    <Cell
+                      style={this.styleHighestOdds(item.neds, item.highest)}
+                    >
+                      {item.neds || "N/A"}
+                    </Cell>
+                    <Cell
+                      style={this.styleHighestOdds(
+                        item.pointsbet,
+                        item.highest
+                      )}
+                    >
+                      {item.pointsbet || "N/A"}
+                    </Cell>
+                    <Cell
+                      style={this.styleHighestOdds(item.topsport, item.highest)}
+                    >
+                      {item.topsport || "N/A"}
+                    </Cell>
+                    <Cell>{item.team}</Cell>
+                    <Cell>{item.match_name}</Cell>
+                  </Row>
+                );
+              })}
+            </StickyTable>
+          </div>
+        </Col>
+        <SideBar />
+      </BSRow>
     );
   };
 
@@ -631,6 +667,7 @@ class SportsBetting extends React.Component {
       <>
         <div>{this.renderMarketSelect()}</div>
         <div>{this.renderTeamSelect()}</div>
+        {this.informationButton()}
         <div>{this.renderTable()}</div>
       </>
     );

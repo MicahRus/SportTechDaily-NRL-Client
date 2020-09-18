@@ -98,6 +98,30 @@ h3,
   opacity: 35%;
 }
 
+.card {
+  margin: 10px 0px;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  filter: invert(100%);
+}
+
+.carousel-indicators .active {
+  background-color: silver !important;
+}
+
+.carousel-indicators li {
+  background-color: black !important;
+}
+
 .css-26l3qy-menu {
   z-index: 9999 !important;
+}
+
+.card-title,
+h5,
+a {
+  color: black !important;
+  font-size: 2vh;
 }

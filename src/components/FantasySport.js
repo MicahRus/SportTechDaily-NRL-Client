@@ -1,7 +1,14 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import { OverlayTrigger, Button, Popover } from "react-bootstrap";
+import {
+  OverlayTrigger,
+  Button,
+  Popover,
+  Col,
+  Row as BSRow,
+} from "react-bootstrap";
 
+import SideBar from "./Carousel";
 import { StickyTable, Row, Cell } from "react-sticky-table";
 
 import Select from "react-select";
@@ -125,138 +132,160 @@ class FantasySport extends React.Component {
 
   filteredDfsTable = () => {
     return (
-      <div className="tableFixHead" style={{ height: "77vh" }}>
-        <StickyTable>
-          <Row>
-            <Cell>Player</Cell>
-            <OverlayTrigger
-              placement="top"
-              trigger={["focus", "hover"]}
-              overlay={PredictedScorePopover}
-            >
-              <Cell>
-                Predicted<br></br>Score
-              </Cell>
-            </OverlayTrigger>
-            <OverlayTrigger
-              placement="top"
-              trigger={["focus", "hover"]}
-              overlay={PricePredPopover}
-            >
-              <Cell>
-                Price/<br></br>Pred (%)
-              </Cell>
-            </OverlayTrigger>
-            <OverlayTrigger
-              placement="top"
-              trigger={["focus", "hover"]}
-              overlay={OwnershipPopover}
-            >
-              <Cell>
-                Ownership<br></br>Previous Round (%)
-              </Cell>
-            </OverlayTrigger>
-            <Cell>Draftstars Price</Cell>
-            <Cell>Team</Cell>
-            <Cell>Position</Cell>
-            <Cell>Match</Cell>
-          </Row>
-
-          {this.state.filteredMatches?.map((item) => {
-            return (
+      <BSRow>
+        <Col sm={12} lg={9}>
+          <div className="tableFixHead" style={{ height: "77vh" }}>
+            <StickyTable>
               <Row>
-                <Cell className="playerFix">{item.player}</Cell>
-
-                <Cell>{Math.round(item.ds_pred)}</Cell>
-                <Cell
-                  style={this.styleDFSConditionalFormatting(item.price_pred)}
+                <Cell>Player</Cell>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={PredictedScorePopover}
                 >
-                  {Math.round(item.price_pred)}
-                </Cell>
-                <Cell
-                  style={this.styleOSPrevConditionalFormatting(item.os_prev)}
+                  <Cell>
+                    Predicted<br></br>Score
+                  </Cell>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={PricePredPopover}
                 >
-                  {Math.round(item.os_prev) || "N/A"}
-                </Cell>
-                <Cell>{Math.round(item.ds_price)}</Cell>
-                <Cell>{item.team}</Cell>
-                <Cell>{item.pos}</Cell>
-                <Cell>{item.match_name}</Cell>
+                  <Cell>
+                    Price/<br></br>Pred (%)
+                  </Cell>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={OwnershipPopover}
+                >
+                  <Cell>
+                    Ownership<br></br>Previous Round (%)
+                  </Cell>
+                </OverlayTrigger>
+                <Cell>Draftstars Price</Cell>
+                <Cell>Team</Cell>
+                <Cell>Position</Cell>
+                <Cell>Match</Cell>
               </Row>
-            );
-          })}
-        </StickyTable>
-      </div>
+
+              {this.state.filteredMatches?.map((item) => {
+                return (
+                  <Row>
+                    <Cell className="playerFix">{item.player}</Cell>
+
+                    <Cell>{Math.round(item.ds_pred)}</Cell>
+                    <Cell
+                      style={this.styleDFSConditionalFormatting(
+                        item.price_pred
+                      )}
+                    >
+                      {Math.round(item.price_pred)}
+                    </Cell>
+                    <Cell
+                      style={this.styleOSPrevConditionalFormatting(
+                        item.os_prev
+                      )}
+                    >
+                      {Math.round(item.os_prev) || "N/A"}
+                    </Cell>
+                    <Cell>{Math.round(item.ds_price)}</Cell>
+                    <Cell>{item.team}</Cell>
+                    <Cell>{item.pos}</Cell>
+                    <Cell>{item.match_name}</Cell>
+                  </Row>
+                );
+              })}
+            </StickyTable>
+          </div>
+        </Col>
+        <Col lg={3}>
+          <SideBar />
+        </Col>
+      </BSRow>
     );
   };
 
   dfsTable() {
     return (
-      <div className="tableFixHead" style={{ height: "77vh" }}>
-        <StickyTable>
-          <Row>
-            <Cell>Player</Cell>
-            <OverlayTrigger
-              placement="top"
-              trigger={["focus", "hover"]}
-              overlay={PredictedScorePopover}
-            >
-              <Cell>
-                Predicted<br></br>Score
-              </Cell>
-            </OverlayTrigger>
-            <OverlayTrigger
-              placement="top"
-              trigger={["focus", "hover"]}
-              overlay={PricePredPopover}
-            >
-              <Cell>
-                Price/<br></br>Pred (%)
-              </Cell>
-            </OverlayTrigger>
-            <OverlayTrigger
-              placement="top"
-              trigger={["focus", "hover"]}
-              overlay={OwnershipPopover}
-            >
-              <Cell>
-                Ownership<br></br>Previous Round(%)
-              </Cell>
-            </OverlayTrigger>
-            <Cell>
-              Draftstars<br></br>Price
-            </Cell>
-            <Cell>Team</Cell>
-            <Cell>Position</Cell>
-            <Cell>Match</Cell>
-          </Row>
-
-          {this.state.dfs_summary.map((item) => {
-            return (
+      <BSRow>
+        <Col sm={12} lg={9}>
+          <div className="tableFixHead" style={{ height: "77vh" }}>
+            <StickyTable>
               <Row>
-                <Cell className="playerFix">{item.player}</Cell>
-                <Cell>{Math.round(item.ds_pred)}</Cell>
-                <Cell
-                  style={this.styleDFSConditionalFormatting(item.price_pred)}
+                <Cell>Player</Cell>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={PredictedScorePopover}
                 >
-                  {Math.round(item.price_pred)}
-                </Cell>
-
-                <Cell
-                  style={this.styleOSPrevConditionalFormatting(item.os_prev)}
+                  <Cell>
+                    Predicted<br></br>Score
+                  </Cell>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={PricePredPopover}
                 >
-                  {Math.round(item.os_prev) || "N/A"}
+                  <Cell>
+                    Price/<br></br>Pred (%)
+                  </Cell>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={OwnershipPopover}
+                >
+                  <Cell>
+                    Ownership<br></br>Previous Round(%)
+                  </Cell>
+                </OverlayTrigger>
+                <Cell>
+                  Draftstars<br></br>Price
                 </Cell>
-
-                <Cell>{Math.round(item.ds_price)}</Cell>
-                <Cell>{item.team}</Cell>
-                <Cell>{item.pos}</Cell>
-                <Cell>{item.match_name}</Cell>
+                <Cell>Team</Cell>
+                <Cell>Position</Cell>
+                <Cell>Match</Cell>
               </Row>
-            );
-          })}
-        </StickyTable>
-      </div>
+
+              {this.state.dfs_summary.map((item) => {
+                return (
+                  <Row>
+                    <Cell className="playerFix">{item.player}</Cell>
+                    <Cell>{Math.round(item.ds_pred)}</Cell>
+                    <Cell
+                      style={this.styleDFSConditionalFormatting(
+                        item.price_pred
+                      )}
+                    >
+                      {Math.round(item.price_pred)}
+                    </Cell>
+
+                    <Cell
+                      style={this.styleOSPrevConditionalFormatting(
+                        item.os_prev
+                      )}
+                    >
+                      {Math.round(item.os_prev) || "N/A"}
+                    </Cell>
+
+                    <Cell>{Math.round(item.ds_price)}</Cell>
+                    <Cell>{item.team}</Cell>
+                    <Cell>{item.pos}</Cell>
+                    <Cell>{item.match_name}</Cell>
+                  </Row>
+                );
+              })}
+            </StickyTable>
+          </div>
+        </Col>
+        <Col lg={3}>
+          <SideBar />
+        </Col>
+      </BSRow>
     );
   }
 
