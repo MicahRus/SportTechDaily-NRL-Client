@@ -25,7 +25,7 @@ class SideBar extends React.Component {
         </BSRow>
         <Carousel style={{ height: "70%" }}>
           <Carousel.Item>
-            <Card style={{ width: "15rem", margin: "auto" }}>
+            <Card>
               <Card.Img
                 variant="top"
                 src="https://sporttechdaily.com/wp-content/uploads/2020/09/SRH_fans_while_an_ipl_match-285x285.jpg"
@@ -50,7 +50,7 @@ class SideBar extends React.Component {
             </Card>
           </Carousel.Item>
           <Carousel.Item>
-            <Card style={{ width: "15rem", margin: "auto" }}>
+            <Card>
               <Card.Img
                 variant="top"
                 src="https://sporttechdaily.com/wp-content/uploads/2020/09/SRH_fans_while_an_ipl_match-285x285.jpg"
@@ -74,7 +74,7 @@ class SideBar extends React.Component {
             </Card>
           </Carousel.Item>
           <Carousel.Item>
-            <Card style={{ width: "15rem", margin: "auto" }}>
+            <Card>
               <Card.Img
                 variant="top"
                 src="https://sporttechdaily.com/wp-content/uploads/2020/09/IPL_-_RR_vs_RCB_11th_May_2014-285x285.jpg"

@@ -8,7 +8,7 @@ import {
   Col,
 } from "react-bootstrap";
 
-import SideBar from "./Carousel";
+import SideBar from "./SideBar";
 import { StickyTable, Row, Cell } from "react-sticky-table";
 import Select from "react-select";
 
