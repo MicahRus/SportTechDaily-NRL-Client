@@ -97,6 +97,55 @@ class SideBar extends React.Component {
               </Card.Body>
             </Card>
           </Carousel.Item>
+          <Carousel.Item>
+            <Card>
+              <Card.Img
+                variant="top"
+                src="https://sporttechdaily.com/wp-content/uploads/2020/08/Your-Edge-Cover-285x285.jpg"
+              />
+              <Card.Body>
+                <Card.Title>
+                  <a href="https://sporttechdaily.com/our-insights/your-edge-round-19/">
+                    Your Edge: The Rise Of JFH And Another Burgess, Positives
+                    For Parra & Hope For The Bottom 8
+                  </a>
+                </Card.Title>
+                <Card.Text>
+                  <p style={{ fontSize: "1.5vh" }}>
+                    <FontAwesomeIcon icon={faUser} /> {"  "}
+                    Jason Oliver
+                  </p>
+                  <p style={{ fontSize: "1.5vh" }}>
+                    <FontAwesomeIcon icon={faClock} /> {"  "}4 minute read
+                  </p>
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Carousel.Item>
+          <Carousel.Item>
+            <Card>
+              <Card.Img
+                variant="top"
+                src="https://sporttechdaily.com/wp-content/uploads/2020/07/WesternSydneyStadiumMainGrandstand-285x285.jpg"
+              />
+              <Card.Body>
+                <Card.Title>
+                  <a href="https://sporttechdaily.com/our-insights/round-18-value-plays/">
+                    Round 18 Value Plays
+                  </a>
+                </Card.Title>
+                <Card.Text>
+                  <p style={{ fontSize: "1.5vh" }}>
+                    <FontAwesomeIcon icon={faUser} /> {"  "}
+                    Jason Oliver
+                  </p>
+                  <p style={{ fontSize: "1.5vh" }}>
+                    <FontAwesomeIcon icon={faClock} /> {"  "}9 minute read
+                  </p>
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Carousel.Item>
         </Carousel>
       </Col>
     );
