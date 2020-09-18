@@ -108,11 +108,11 @@ h3,
 }
 
 .carousel-indicators .active {
-  background-color: silver !important;
+  background-color: black !important;
 }
 
 .carousel-indicators li {
-  background-color: black !important;
+  background-color: silver !important;
 }
 
 .css-26l3qy-menu {
