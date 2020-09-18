@@ -70,8 +70,8 @@ class MainNav extends React.Component {
                 >
                   Fantasy
                 </Nav.Link>
-              {/* </Nav.Item>
-              <Nav.Item>
+              </Nav.Item>
+              {/*<Nav.Item>
                 <Nav.Link
                   onClick={() => {
                     this.setState({
