@@ -128,3 +128,7 @@ a {
   color: black !important;
   font-size: 2vh;
 }
+
+.sticky-table-header {
+  cursor: pointer;
+}
