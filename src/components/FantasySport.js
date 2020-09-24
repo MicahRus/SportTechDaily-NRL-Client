@@ -39,9 +39,8 @@ class FantasySport extends React.Component {
   }
 
   getDfsData = async () => {
-    console.log(process.env.REACT_APP_BACKEND_URL_NRL);
     const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL_NRL}/dfs_summary`
+      `${process.env.REACT_APP_BACKEND_URL}/dfs_summary`
     );
     const data = await response.json();
     localStorage.setItem("dfs_summary", JSON.stringify(data.rows));
