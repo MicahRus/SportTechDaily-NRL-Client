@@ -144,7 +144,7 @@ class SportsBetting extends React.Component {
   // Retrieves data from ats_summary table
   getAtsData = async () => {
     const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/ats_summary`
+      `${process.env.REACT_APP_BACKEND_URL_NRL}/ats_summary`
     );
     const data = await response.json();
     localStorage.setItem("ats_summary", JSON.stringify(data.rows));
@@ -154,7 +154,7 @@ class SportsBetting extends React.Component {
   // Retrieves data from fts_summary table
   getFtsData = async () => {
     const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_URL}/fts_summary`
+      `${process.env.REACT_APP_BACKEND_URL_NRL}/fts_summary`
     );
     const data = await response.json();
     localStorage.setItem("fts_summary", JSON.stringify(data.rows));

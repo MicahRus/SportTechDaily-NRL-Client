@@ -152,7 +152,7 @@ class Home extends React.Component {
   getCurrentMatches = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/current_matches`
+        `${process.env.REACT_APP_BACKEND_URL_NRL}/current_matches`
       );
       const data = await response.json();
       this.setState({ currentMatches: data.rows });
@@ -164,7 +164,7 @@ class Home extends React.Component {
   getSeasonPlayerStatsAverage = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/season/player/stats/average`
+        `${process.env.REACT_APP_BACKEND_URL_NRL}/season/player/stats/average`
       );
       const data = await response.json();
       this.setState({ seasonPlayerStatsAverage: data.rows });
@@ -176,7 +176,7 @@ class Home extends React.Component {
   getSeasonPlayerStatsTotal = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/season/player/stats/total`
+        `${process.env.REACT_APP_BACKEND_URL_NRL}/season/player/stats/total`
       );
       const data = await response.json();
       this.setState({ seasonPlayerStatsTotal: data.rows });
@@ -188,7 +188,7 @@ class Home extends React.Component {
   getSeasonPlayerPercentilesTotal = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/season/player/percentile/total`
+        `${process.env.REACT_APP_BACKEND_URL_NRL}/season/player/percentile/total`
       );
       const data = await response.json();
       this.setState({ seasonPlayerPercentilesTotal: data.rows });
@@ -200,7 +200,7 @@ class Home extends React.Component {
   getSeasonPlayerPercentilesAverage = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/season/player/percentile/average`
+        `${process.env.REACT_APP_BACKEND_URL_NRL}/season/player/percentile/average`
       );
       const data = await response.json();
       this.setState({ seasonPlayerPercentilesAverage: data.rows });
@@ -212,7 +212,7 @@ class Home extends React.Component {
   getPlayerAveragePercentiles = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/average_percentiles`
+        `${process.env.REACT_APP_BACKEND_URL_NRL}/average_percentiles`
       );
       const data = await response.json();
       this.setState({ averagePlayerPercentiles: data.rows });
@@ -224,7 +224,7 @@ class Home extends React.Component {
   getPlayerPercentiles = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/percentiles`
+        `${process.env.REACT_APP_BACKEND_URL_NRL}/percentiles`
       );
       const data = await response.json();
       this.setState({ playerPercentiles: data.rows });
@@ -252,7 +252,7 @@ class Home extends React.Component {
       }
 
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/matches?playerId1=${playerId1}&playerId2=${playerId2}`
+        `${process.env.REACT_APP_BACKEND_URL_NRL}/matches?playerId1=${playerId1}&playerId2=${playerId2}`
       );
       const data = await response.json();
       let player1Matches = [];
@@ -281,7 +281,7 @@ class Home extends React.Component {
   getAllPlayersData = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/players`
+        `${process.env.REACT_APP_BACKEND_URL_NRL}/players`
       );
       const data = await response.json();
       this.setState({ players: data.rows });
@@ -293,7 +293,7 @@ class Home extends React.Component {
   getCurrentPlayers = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/currentplayers`
+        `${process.env.REACT_APP_BACKEND_URL_NRL}/currentplayers`
       );
       const data = await response.json();
 
@@ -314,7 +314,7 @@ class Home extends React.Component {
     try {
       playerId = parseInt(playerId);
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/player/id?playerId=${playerId}`
+        `${process.env.REACT_APP_BACKEND_URL_NRL}/player/id?playerId=${playerId}`
       );
       const data = await response.json();
 
@@ -349,7 +349,7 @@ class Home extends React.Component {
   getAllTeamsData = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/teams`
+        `${process.env.REACT_APP_BACKEND_URL_NRL}/teams`
       );
       const data = await response.json();
       this.setState({ teams: data.rows });
@@ -631,7 +631,7 @@ class Home extends React.Component {
       }
       return null;
     });
-    this.setState({ graphData: newData, redirect: "/" });
+    this.setState({ graphData: newData, redirect: "/nrl" });
   };
 
   toggleAdvancedOptions = () => {
@@ -707,7 +707,7 @@ class Home extends React.Component {
     });
     this.setState({
       graphData: clonedArray,
-      redirect: "/",
+      redirect: "/nrl",
       getNewPlayer1Data: true,
     });
   };
@@ -1945,7 +1945,7 @@ class Home extends React.Component {
                   this.setState({ refreshBarChart: true });
                 }
                 this.setState({
-                  redirect: "/",
+                  redirect: "/nrl",
                   getNewPlayer1Data: true,
                   averageOrTotal: "average",
                   checked: true,
@@ -1963,7 +1963,7 @@ class Home extends React.Component {
                   this.setState({ refreshBarChart: true });
                 }
                 this.setState({
-                  redirect: "/",
+                  redirect: "/nrl",
                   getNewPlayer1Data: true,
                   averageOrTotal: "total",
                   checked: false,
@@ -2167,7 +2167,7 @@ class Home extends React.Component {
     }
     if (this.state.redirect) {
       this.handleRefresh();
-      return <Redirect to={this.state.redirect} />;
+      return <Redirect push to={this.state.redirect} />;
     }
     return (
       <>
