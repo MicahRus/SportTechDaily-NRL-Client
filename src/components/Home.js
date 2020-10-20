@@ -616,21 +616,43 @@ class Home extends React.Component {
         }
         return null;
       });
-      if (playerNumber === "player1") {
-        newData.push({
-          stat: this.state.options[x].value,
-          [playerName]: playerStat,
-          [keys[2]]: values[2],
-        });
+      if (x === 2) {
+        console.log(100 - values[2]);
+        console.log(keys[2]);
+        console.log("errors");
+        console.log(100 - values[1]);
+        console.log(keys[1]);
+        if (playerNumber === "player1") {
+          newData.push({
+            stat: this.state.options[x].value,
+            [playerName]: playerStat,
+            [keys[2]]: values[2],
+          });
+        } else {
+          newData.push({
+            stat: this.state.options[x].value,
+            [keys[1]]: values[1],
+            [playerName]: playerStat,
+          });
+        }
       } else {
-        newData.push({
-          stat: this.state.options[x].value,
-          [keys[1]]: values[1],
-          [playerName]: playerStat,
-        });
+        if (playerNumber === "player1") {
+          newData.push({
+            stat: this.state.options[x].value,
+            [playerName]: playerStat,
+            [keys[2]]: values[2],
+          });
+        } else {
+          newData.push({
+            stat: this.state.options[x].value,
+            [keys[1]]: values[1],
+            [playerName]: playerStat,
+          });
+        }
       }
       return null;
     });
+    console.log(newData);
     this.setState({ graphData: newData, redirect: "/" });
   };
 

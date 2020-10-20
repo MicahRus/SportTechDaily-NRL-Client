@@ -132,3 +132,11 @@ a {
 .sticky-table-header {
   cursor: pointer;
 }
+
+text {
+  font-size: 0.75em !important;
+  color: black !important;
+  opacity: 1 !important;
+  font-weight: bold;
+  fill: black !important;
+}
