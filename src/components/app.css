@@ -10,19 +10,19 @@ body {
   min-height: 100%;
 }
 
-.graph-container {
-  /* height: 90vh; */
-  height: 80%;
-}
-
 h3,
 .h3 {
   font-size: 3vh !important;
   padding-right: 5px;
 }
 
+.graph-container {
+  height: 90vh;
+}
+
 .nav-link {
   color: #3cb44c !important;
+  font-size: 1rem;
 }
 
 .info-button {
@@ -33,8 +33,16 @@ h3,
   font-family: Hoefler Text Bold Italic;
 }
 
+#control-tabs {
+  background-color: #eaecef;
+}
+
 .navbar-nav > .active > a {
   background-color: silver !important;
+}
+
+.btn-toolbar {
+  margin-top: 5px;
 }
 
 .betting-header {
@@ -52,52 +60,294 @@ h3,
 }
 
 .form-check-label {
-  font-size: 1.5vh;
+  font-size: 0.9rem;
 }
 
-/* First container of table */
-/* .sc-hKFyIo {
-  background-color: red;
+.template-button {
+  margin-right: 5px;
+}
+
+/* This controls the size of the checkboxes */
+/* .custom-control-label::before {
+  width: 13px !important;
+  height: 13px !important;
 } */
 
-/* Each Row of the table */
-/* .sc-dlnjPT {
-  background-color: red !important;
-} */
-
-/* Each cell of the table */
 .sc-gtssRu {
   border-right: solid 2px #e5e5e5;
-  font-size: 1.5vh;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
-/* The div that wraps the table */
+.playerFix {
+  left: 0;
+  position: sticky;
+  top: auto;
+  width: 120px;
+  overflow-x: auto;
+  background: #eee;
+}
+
 .tableFixHead {
-  width: 100%;
-  height: 73vh;
+  overflow-y: auto;
+  height: 100vh;
 }
 
-.footer {
+.footer-mine {
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: rgb(21, 18, 18);
   width: 100%;
-  color: whitesmoke;
-  margin-top: 2vh;
+  color: #e4dfdf;
+  margin-top: 6.5vh;
 }
 
 .social {
-  color: rgb(228, 223, 223);
+  color: #e4dfdf !important;
   margin-left: 5px;
   margin-right: 5px;
 }
 
 #copyright {
   font-size: small;
-  opacity: 35%;
+  color: gray;
 }
 
 .css-26l3qy-menu {
   z-index: 9999 !important;
+}
+
+.graph-control-item-group {
+  margin: 10px 0px;
+}
+
+text {
+  font-size: 0.75em !important;
+  color: black !important;
+  opacity: 1 !important;
+  font-weight: bold;
+  fill: black !important;
+}
+
+.card {
+  margin: 10px 0px;
+  width: 15rem;
+  margin: auto;
+  height: 500px;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  filter: invert(100%);
+}
+
+.carousel-indicators .active {
+  background-color: black !important;
+}
+
+.carousel-indicators li {
+  background-color: silver !important;
+}
+
+.card-title,
+h5,
+a {
+  color: black !important;
+  font-size: 2vh;
+}
+
+.sticky-table-header {
+  cursor: pointer;
+}
+
+.landing-header {
+  margin: 15px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.css-2b097c-container {
+  margin-top: 10px;
+}
+
+.landing-column-bumpers {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  height: 50%;
+}
+
+.landing-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.article-cards {
+  padding: 2.5px;
+  max-height: 50%;
+}
+
+.article-cards-container {
+  max-width: 25rem;
+  max-height: 17rem;
+  margin-bottom: 10px;
+}
+
+/* .landing-bumper-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 110%;
+  cursor: pointer;
+}
+
+.landing-bumper-image {
+  position: relative;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  width: 70%;
+  height: 40%;
+  border-radius: 5px;
+}
+
+.landing-bumper-image:hover {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  -webkit-transition: opacity 0.3s ease-in-out;
+} */
+
+.landing-side-cards-headers {
+  font-size: 1rem;
+}
+
+.carousel-inner {
+  height: 500px !important;
+}
+
+.landing-column-3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing-page-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.carousel-card {
+  width: 80%;
+  max-height: 100%;
+}
+
+.carousel-custom-item {
+  height: 80%;
+}
+
+.carousel-container {
+  height: 30rem;
+}
+
+.carousel-card-image {
+  /* width: auto; */
+  max-width: 100% !important;
+  height: 100%;
+  /* padding: 3vw; */
+  transition: transform 0.2s; /* Animation */
+  margin: 0 auto;
+}
+
+.carousel-card-image:hover {
+  transform: scale(1.2);
+}
+
+/* These options are for the select dropdowns */
+
+.css-1nivpws-container {
+  height: 55px;
+}
+
+.css-yk16xz-control {
+  height: 55px;
+}
+
+.css-g1d714-ValueContainer {
+  height: 55px;
+}
+
+/* .css-yt9ioa-option {
+  height: 500px !important;
+} */
+
+.player-dropdown > .css-26l3qy-menu {
+  width: 115% !important;
+}
+
+/* End dropdown options ^ */
+
+.value-box {
+  margin: 0.3rem;
+  padding: 0.3rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.side-bar-card-text {
+  font-size: 0.7rem;
+}
+
+.information-text {
+  font-size: 0.7rem;
+}
+
+.sticky-table-body {
+  height: 90% !important;
+}
+
+@media screen and (max-width: 800px) {
+  text {
+    font-size: 0.7em !important;
+  }
+  /* This hides the social media elements when on a mobile site */
+  .landing-column-2 {
+    display: none;
+  }
+
+  .carousel-custom-item {
+    height: 50%;
+  }
+
+  .landing-column {
+    align-items: center;
+  }
+
+  .carousel-container {
+    height: 20rem;
+  }
+
+  .sc-gtssRu {
+    border-right: solid 2px #e5e5e5;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
 }

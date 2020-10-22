@@ -20,8 +20,12 @@ function App() {
         <MainNav />
         <Switch>
           <Route exact path="/" component={Home} />
+<<<<<<< HEAD
           <Route exact path="/fantasysport" component={FantasySport} />
+=======
+>>>>>>> master
           <Route exact path="/sportsbetting" component={SportsBetting} />
+          <Route exact path="/fantasysport" component={FantasySport} />
           <Route component={PageNotFound} />
         </Switch>
         <Footer />

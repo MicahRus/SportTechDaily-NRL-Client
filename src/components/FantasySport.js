@@ -1,7 +1,14 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import { OverlayTrigger, Button, Popover } from "react-bootstrap";
+import {
+  OverlayTrigger,
+  Button,
+  Popover,
+  Col,
+  Row as BSRow,
+} from "react-bootstrap";
 
+import SideBar from "./SideBar";
 import { StickyTable, Row, Cell } from "react-sticky-table";
 
 import Select from "react-select";
@@ -14,6 +21,8 @@ class FantasySport extends React.Component {
   state = {
     redirect: null,
     dfs_summary: [],
+    filteredMatches: [],
+    market: "DFS",
   };
 
   componentDidUpdate() {
@@ -21,9 +30,9 @@ class FantasySport extends React.Component {
   }
 
   componentDidMount() {
-    if (localStorage.getItem("DfsData")) {
+    if (localStorage.getItem("dfs_summary")) {
       this.setState({
-        dfs_summary: JSON.parse(localStorage.getItem("DfsData")),
+        dfs_summary: JSON.parse(localStorage.getItem("dfs_summary")),
       });
     }
     this.getDfsData();
@@ -34,7 +43,7 @@ class FantasySport extends React.Component {
       `${process.env.REACT_APP_BACKEND_URL}/dfs_summary`
     );
     const data = await response.json();
-    localStorage.setItem("DfsData", JSON.stringify(data.rows));
+    localStorage.setItem("dfs_summary", JSON.stringify(data.rows));
     this.setState({ dfs_summary: data.rows }, () => {
       this.setMatchData();
     });
@@ -125,6 +134,7 @@ class FantasySport extends React.Component {
 
   filteredDfsTable = () => {
     return (
+<<<<<<< HEAD
       <div className="tableFixHead" style={{ height: "80vh" }}>
         <StickyTable>
           <Row>
@@ -164,99 +174,260 @@ class FantasySport extends React.Component {
 
           {this.state.filteredMatches?.map((item) => {
             return (
+=======
+      <BSRow>
+        <Col sm={12} lg={9}>
+          <div className="tableFixHead" style={{ height: "77vh" }}>
+            <StickyTable>
+>>>>>>> master
               <Row>
-                <Cell className="playerFix">{item.player}</Cell>
-
-                <Cell>{Math.round(item.ds_pred)}</Cell>
-                <Cell
-                  style={this.styleDFSConditionalFormatting(item.price_pred)}
-                >
-                  {Math.round(item.price_pred)}
+                <Cell>
+                  <a
+                    className="sticky-table-header"
+                    onClick={this.headingClickHandler}
+                  >
+                    Player
+                  </a>
                 </Cell>
-                <Cell
-                  style={this.styleOSPrevConditionalFormatting(item.os_prev)}
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={PredictedScorePopover}
                 >
-                  {Math.round(item.os_prev) || "N/A"}
+                  <Cell>
+                    <a
+                      className="sticky-table-header"
+                      onClick={this.headingClickHandler}
+                    >
+                      Predicted<br></br>Score
+                    </a>
+                  </Cell>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={PricePredPopover}
+                >
+                  <Cell>
+                    <a
+                      className="sticky-table-header"
+                      onClick={this.headingClickHandler}
+                    >
+                      Price/<br></br>Pred (%)
+                    </a>
+                  </Cell>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={OwnershipPopover}
+                >
+                  <Cell>
+                    <a
+                      className="sticky-table-header"
+                      onClick={this.headingClickHandler}
+                    >
+                      Ownership<br></br>Previous Round(%)
+                    </a>
+                  </Cell>
+                </OverlayTrigger>
+                <Cell>
+                  <a
+                    className="sticky-table-header"
+                    onClick={this.headingClickHandler}
+                  >
+                    Draftstars<br></br>Price
+                  </a>
                 </Cell>
-                <Cell>{Math.round(item.ds_price)}</Cell>
-                <Cell>{item.team}</Cell>
-                <Cell>{item.pos}</Cell>
-                <Cell>{item.match_name}</Cell>
+                <Cell>
+                  <a
+                    className="sticky-table-header"
+                    onClick={this.headingClickHandler}
+                  >
+                    Team
+                  </a>
+                </Cell>
+                <Cell>
+                  <a
+                    className="sticky-table-header"
+                    onClick={this.headingClickHandler}
+                  >
+                    Position
+                  </a>
+                </Cell>
+                <Cell>
+                  <a
+                    className="sticky-table-header"
+                    onClick={this.headingClickHandler}
+                  >
+                    Match
+                  </a>
+                </Cell>
               </Row>
-            );
-          })}
-        </StickyTable>
-      </div>
+
+              {this.state.filteredMatches?.map((item) => {
+                return (
+                  <Row>
+                    <Cell className="playerFix">{item.player}</Cell>
+
+                    <Cell>{Math.round(item.ds_pred)}</Cell>
+                    <Cell
+                      style={this.styleDFSConditionalFormatting(
+                        item.price_pred
+                      )}
+                    >
+                      {Math.round(item.price_pred)}
+                    </Cell>
+                    <Cell
+                      style={this.styleOSPrevConditionalFormatting(
+                        item.os_prev
+                      )}
+                    >
+                      {Math.round(item.os_prev) || "N/A"}
+                    </Cell>
+                    <Cell>{Math.round(item.ds_price)}</Cell>
+                    <Cell>{item.team}</Cell>
+                    <Cell>{item.pos}</Cell>
+                    <Cell>{item.match_name}</Cell>
+                  </Row>
+                );
+              })}
+            </StickyTable>
+          </div>
+        </Col>
+        <Col lg={3}>
+          <SideBar />
+        </Col>
+      </BSRow>
     );
   };
 
   dfsTable() {
     return (
-      <div className="tableFixHead" style={{ height: "80vh" }}>
-        <StickyTable>
-          <Row>
-            <Cell>Player</Cell>
-            <OverlayTrigger
-              placement="top"
-              trigger={["focus", "hover"]}
-              overlay={PredictedScorePopover}
-            >
-              <Cell>
-                Predicted<br></br>Score
-              </Cell>
-            </OverlayTrigger>
-            <OverlayTrigger
-              placement="top"
-              trigger={["focus", "hover"]}
-              overlay={PricePredPopover}
-            >
-              <Cell>
-                Price/<br></br>Pred (%)
-              </Cell>
-            </OverlayTrigger>
-            <OverlayTrigger
-              placement="top"
-              trigger={["focus", "hover"]}
-              overlay={OwnershipPopover}
-            >
-              <Cell>
-                Ownership<br></br>Previous Round(%)
-              </Cell>
-            </OverlayTrigger>
-            <Cell>
-              Draftstars<br></br>Price
-            </Cell>
-            <Cell>Team</Cell>
-            <Cell>Position</Cell>
-            <Cell>Match</Cell>
-          </Row>
-
-          {this.state.dfs_summary.map((item) => {
-            return (
+      <BSRow>
+        <Col sm={12} lg={9}>
+          <div className="tableFixHead" style={{ height: "77vh" }}>
+            <StickyTable>
               <Row>
-                <Cell className="playerFix">{item.player}</Cell>
-                <Cell>{Math.round(item.ds_pred)}</Cell>
-                <Cell
-                  style={this.styleDFSConditionalFormatting(item.price_pred)}
-                >
-                  {Math.round(item.price_pred)}
+                <Cell>
+                  <a
+                    className="sticky-table-header"
+                    onClick={this.headingClickHandler}
+                  >
+                    Player
+                  </a>
                 </Cell>
-
-                <Cell
-                  style={this.styleOSPrevConditionalFormatting(item.os_prev)}
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={PredictedScorePopover}
                 >
-                  {Math.round(item.os_prev) || "N/A"}
+                  <Cell>
+                    <a
+                      className="sticky-table-header"
+                      onClick={this.headingClickHandler}
+                    >
+                      Predicted<br></br>Score
+                    </a>
+                  </Cell>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={PricePredPopover}
+                >
+                  <Cell>
+                    <a
+                      className="sticky-table-header"
+                      onClick={this.headingClickHandler}
+                    >
+                      Price/<br></br>Pred (%)
+                    </a>
+                  </Cell>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  placement="top"
+                  trigger={["focus", "hover"]}
+                  overlay={OwnershipPopover}
+                >
+                  <Cell>
+                    <a
+                      className="sticky-table-header"
+                      onClick={this.headingClickHandler}
+                    >
+                      Ownership<br></br>Previous Round(%)
+                    </a>
+                  </Cell>
+                </OverlayTrigger>
+                <Cell>
+                  <a
+                    className="sticky-table-header"
+                    onClick={this.headingClickHandler}
+                  >
+                    Draftstars<br></br>Price
+                  </a>
                 </Cell>
-
-                <Cell>{Math.round(item.ds_price)}</Cell>
-                <Cell>{item.team}</Cell>
-                <Cell>{item.pos}</Cell>
-                <Cell>{item.match_name}</Cell>
+                <Cell>
+                  <a
+                    className="sticky-table-header"
+                    onClick={this.headingClickHandler}
+                  >
+                    Team
+                  </a>
+                </Cell>
+                <Cell>
+                  <a
+                    className="sticky-table-header"
+                    onClick={this.headingClickHandler}
+                  >
+                    Position
+                  </a>
+                </Cell>
+                <Cell>
+                  <a
+                    className="sticky-table-header"
+                    onClick={this.headingClickHandler}
+                  >
+                    Match
+                  </a>
+                </Cell>
               </Row>
-            );
-          })}
-        </StickyTable>
-      </div>
+
+              {this.state.dfs_summary.map((item) => {
+                return (
+                  <Row>
+                    <Cell className="playerFix">{item.player}</Cell>
+                    <Cell>{Math.round(item.ds_pred)}</Cell>
+                    <Cell
+                      style={this.styleDFSConditionalFormatting(
+                        item.price_pred
+                      )}
+                    >
+                      {Math.round(item.price_pred)}
+                    </Cell>
+
+                    <Cell
+                      style={this.styleOSPrevConditionalFormatting(
+                        item.os_prev
+                      )}
+                    >
+                      {Math.round(item.os_prev) || "N/A"}
+                    </Cell>
+
+                    <Cell>{Math.round(item.ds_price)}</Cell>
+                    <Cell>{item.team}</Cell>
+                    <Cell>{item.pos}</Cell>
+                    <Cell>{item.match_name}</Cell>
+                  </Row>
+                );
+              })}
+            </StickyTable>
+          </div>
+        </Col>
+        <Col lg={3}>
+          <SideBar />
+        </Col>
+      </BSRow>
     );
   }
 
@@ -277,6 +448,21 @@ class FantasySport extends React.Component {
             i
           </Button>
         </OverlayTrigger>
+        <Button
+          onClick={() => {
+            this.setState({
+              dfs_summary: JSON.parse(localStorage.getItem("dfs_summary")),
+              filteredMatches: JSON.parse(
+                localStorage.getItem("filtered_matches")
+              ),
+              order: "descending",
+            });
+          }}
+          variant="outline-primary"
+          style={{ marginLeft: "15px" }}
+        >
+          Reset Table
+        </Button>
       </div>
     );
   };
@@ -286,6 +472,167 @@ class FantasySport extends React.Component {
       return this.dfsTable();
     }
     return this.filteredDfsTable();
+  };
+
+  headingClickHandler = (e) => {
+    let event = e.target.innerText;
+    let key = "";
+    let type = "";
+    let order = this.state.order;
+    let summary = null;
+
+    if (this.state.filteredMatches?.length > 0) {
+      summary = "filteredMatches";
+    }
+
+    summary = `${this.state.market.toLowerCase()}_summary`;
+    event = event.replace(/\n/g, " ");
+
+    switch (event) {
+      case "Player":
+        key = "player";
+        type = "text";
+        break;
+      case "Predicted Score":
+        key = "ds_pred";
+        type = "integer";
+        break;
+      case "Price/ Pred (%)":
+        key = "price_pred";
+        type = "integer";
+        break;
+      case "Ownership Previous Round(%)":
+        key = "os_prev";
+        type = "integer";
+        break;
+      case "Draftstars Price":
+        key = "ds_price";
+        type = "integer";
+        break;
+      case "Position":
+        key = "pos";
+        type = "text";
+        break;
+
+      case "Team":
+        key = "team";
+        type = "text";
+        break;
+      case "Match":
+        key = "match_name";
+        type = "text";
+        break;
+      default:
+        console.log("defaulted");
+        console.log(event);
+        break;
+    }
+
+    if (this.state.key !== key) {
+      order = "descending";
+    }
+
+    if (type === "integer") {
+      if (order === "descending") {
+        let filteredSummary = JSON.parse(
+          JSON.stringify(
+            this.state[summary].sort(
+              (a, b) => parseFloat(b[key] || 0) - parseFloat(a[key] || 0)
+            )
+          )
+        );
+
+        this.setState({
+          [summary]: filteredSummary,
+          order: "ascending",
+          key,
+        });
+
+        if (this.state.filteredMatches.length > 0) {
+          this.setState({ filteredMatches: filteredSummary });
+        }
+      }
+      if (order === "ascending") {
+        let filteredSummary = JSON.parse(
+          JSON.stringify(
+            this.state[summary].sort(
+              (a, b) => parseFloat(a[key] || 0) - parseFloat(b[key] || 0)
+            )
+          )
+        );
+        this.setState({
+          [summary]: filteredSummary,
+          order: "descending",
+          key,
+        });
+
+        if (this.state.filteredMatches.length > 0) {
+          this.setState({ filteredMatches: filteredSummary });
+        }
+      }
+    }
+
+    if (type === "text") {
+      if (order === "descending") {
+        let filteredSummary = JSON.parse(
+          JSON.stringify(
+            this.state[summary].sort((a, b) => {
+              let fa = a[key].split(" ").join("").toLowerCase();
+              let fb = b[key].split(" ").join("").toLowerCase();
+
+              if (fa < fb) {
+                return -1;
+              }
+
+              if (fa > fb) {
+                return 1;
+              }
+              return 0;
+            })
+          )
+        );
+
+        this.setState({
+          [summary]: filteredSummary,
+          order: "ascending",
+          key,
+        });
+
+        if (this.state.filteredMatches.length > 0) {
+          this.setState({ filteredMatches: filteredSummary });
+        }
+      }
+
+      if (order === "ascending") {
+        let filteredSummary = JSON.parse(
+          JSON.stringify(
+            this.state[summary].sort((a, b) => {
+              let fa = a[key].toLowerCase();
+              let fb = b[key].toLowerCase();
+
+              if (fa > fb) {
+                return -1;
+              }
+
+              if (fa < fb) {
+                return 1;
+              }
+              return 0;
+            })
+          )
+        );
+
+        if (this.state.filteredMatches.length > 0) {
+          this.setState({ filteredMatches: filteredSummary });
+        }
+
+        this.setState({
+          [summary]: filteredSummary,
+          order: "descending",
+          key,
+        });
+      }
+    }
   };
 
   render() {
